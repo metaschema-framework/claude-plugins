@@ -1,0 +1,105 @@
+{
+  "profile" : {
+    "modify" : {
+      "alters" : [ {
+        "control-id" : "ac-1",
+        "adds" : [ {
+          "parts" : [ {
+            "id" : "ac-1_org_req",
+            "name" : "item",
+            "prose" : "The organization shall review and update access control policies annually or when significant changes to the information system occur.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "Organization-Defined"
+            } ]
+          } ]
+        } ]
+      }, {
+        "control-id" : "ia-2",
+        "adds" : [ {
+          "parts" : [ {
+            "id" : "ia-2_org_req",
+            "name" : "item",
+            "prose" : "Multi-factor authentication is required for all privileged access and remote access to organizational systems."
+          } ]
+        } ]
+      } ],
+      "set-parameters" : [ {
+        "param-id" : "ac-1_prm_1",
+        "values" : [ "Chief Information Security Officer (CISO)" ]
+      }, {
+        "param-id" : "ac-2_prm_1",
+        "values" : [ "privileged accounts", "shared accounts", "group accounts", "temporary accounts", "service accounts" ]
+      }, {
+        "param-id" : "ac-2_prm_2",
+        "values" : [ "access authorizations", "role membership", "access attributes" ]
+      }, {
+        "param-id" : "ac-7_prm_1",
+        "values" : [ "3" ]
+      }, {
+        "param-id" : "ac-7_prm_2",
+        "values" : [ "15 minutes" ]
+      }, {
+        "param-id" : "au-2_prm_1",
+        "values" : [ "successful and unsuccessful logon attempts", "privileged function executions", "security-relevant configuration changes", "access to audit logs" ]
+      }, {
+        "param-id" : "au-6_prm_1",
+        "values" : [ "weekly" ]
+      }, {
+        "param-id" : "ca-7_prm_1",
+        "values" : [ "monthly" ]
+      }, {
+        "param-id" : "ia-5_prm_1",
+        "values" : [ "within 24 hours of initial issuance" ]
+      }, {
+        "param-id" : "ra-5_prm_1",
+        "values" : [ "monthly or when significant changes occur" ]
+      }, {
+        "param-id" : "si-2_prm_1",
+        "values" : [ "within 30 days of release for critical patches", "within 90 days for non-critical patches" ]
+      } ]
+    },
+    "merge" : {
+      "as-is" : true
+    },
+    "metadata" : {
+      "version" : "1.0.0",
+      "remarks" : "This is a sample profile demonstrating control selection from NIST SP 800-53 Rev 5.",
+      "roles" : [ {
+        "id" : "profile-author",
+        "title" : "Profile Author"
+      } ],
+      "title" : "Sample Security Baseline Profile",
+      "responsible-parties" : [ {
+        "role-id" : "profile-author",
+        "party-uuids" : [ "11111111-2222-4333-8444-555555555555" ]
+      } ],
+      "last-modified" : "2024-01-06T12:00:00Z",
+      "oscal-version" : "1.1.2",
+      "parties" : [ {
+        "type" : "organization",
+        "name" : "Example Organization",
+        "uuid" : "11111111-2222-4333-8444-555555555555"
+      } ]
+    },
+    "imports" : [ {
+      "href" : "https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json",
+      "include-controls" : [ {
+        "with-ids" : [ "ac-1", "ac-2", "ac-3", "ac-6", "ac-7", "at-1", "at-2", "au-1", "au-2", "au-3", "au-6", "ca-1", "ca-2", "ca-7", "cm-1", "cm-2", "cm-6", "cm-7", "cp-1", "cp-9", "ia-1", "ia-2", "ia-5", "ir-1", "ir-4", "ir-6", "ma-1", "mp-1", "pe-1", "pl-1", "pl-2", "ps-1", "ra-1", "ra-3", "ra-5", "sa-1", "sc-1", "sc-7", "sc-8", "sc-13", "si-1", "si-2", "si-3", "si-4", "sr-1" ]
+      } ]
+    } ],
+    "uuid" : "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d",
+    "back-matter" : {
+      "resources" : [ {
+        "uuid" : "aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee",
+        "rlinks" : [ {
+          "href" : "https://doi.org/10.6028/NIST.SP.800-53r5"
+        } ],
+        "title" : "NIST SP 800-53 Rev 5",
+        "citation" : {
+          "text" : "Joint Task Force. Security and Privacy Controls for Information Systems and Organizations. NIST Special Publication 800-53, Revision 5. September 2020."
+        }
+      } ]
+    }
+  }
+}

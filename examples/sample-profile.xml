@@ -1,0 +1,245 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sample OSCAL Profile - Security Baseline
+
+  This profile demonstrates:
+  - Importing controls from NIST SP 800-53 Rev 5
+  - Selecting specific controls for a baseline
+  - Setting organization-defined parameters
+  - Adding organizational requirements to controls
+
+  Use 'oscal-cli resolve-profile' to produce a resolved catalog.
+-->
+<profile xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d">
+
+  <!-- ========================================
+       METADATA: Document identification and provenance
+       ======================================== -->
+  <metadata>
+    <title>Sample Security Baseline Profile</title>
+    <last-modified>2024-01-06T12:00:00Z</last-modified>
+    <version>1.0.0</version>
+    <oscal-version>1.1.2</oscal-version>
+
+    <!-- Roles define responsibilities -->
+    <role id="profile-author">
+      <title>Profile Author</title>
+    </role>
+
+    <!-- Parties are organizations or individuals -->
+    <party uuid="11111111-2222-4333-8444-555555555555" type="organization">
+      <name>Example Organization</name>
+    </party>
+
+    <!-- Link roles to parties -->
+    <responsible-party role-id="profile-author">
+      <party-uuid>11111111-2222-4333-8444-555555555555</party-uuid>
+    </responsible-party>
+
+    <remarks>
+      <p>This is a sample profile demonstrating control selection from NIST SP 800-53 Rev 5.</p>
+    </remarks>
+  </metadata>
+
+  <!-- ========================================
+       IMPORT: Select controls from source catalog(s)
+       ======================================== -->
+  <import href="https://raw.githubusercontent.com/usnistgov/oscal-content/main/nist.gov/SP800-53/rev5/json/NIST_SP-800-53_rev5_catalog.json">
+    <include-controls>
+      <!-- Access Control (AC) family -->
+      <with-id>ac-1</with-id>   <!-- Policy and Procedures -->
+      <with-id>ac-2</with-id>   <!-- Account Management -->
+      <with-id>ac-3</with-id>   <!-- Access Enforcement -->
+      <with-id>ac-6</with-id>   <!-- Least Privilege -->
+      <with-id>ac-7</with-id>   <!-- Unsuccessful Logon Attempts -->
+
+      <!-- Awareness and Training (AT) family -->
+      <with-id>at-1</with-id>
+      <with-id>at-2</with-id>
+
+      <!-- Audit and Accountability (AU) family -->
+      <with-id>au-1</with-id>
+      <with-id>au-2</with-id>   <!-- Event Logging -->
+      <with-id>au-3</with-id>   <!-- Content of Audit Records -->
+      <with-id>au-6</with-id>   <!-- Audit Record Review -->
+
+      <!-- Assessment, Authorization, and Monitoring (CA) family -->
+      <with-id>ca-1</with-id>
+      <with-id>ca-2</with-id>
+      <with-id>ca-7</with-id>   <!-- Continuous Monitoring -->
+
+      <!-- Configuration Management (CM) family -->
+      <with-id>cm-1</with-id>
+      <with-id>cm-2</with-id>   <!-- Baseline Configuration -->
+      <with-id>cm-6</with-id>   <!-- Configuration Settings -->
+      <with-id>cm-7</with-id>   <!-- Least Functionality -->
+
+      <!-- Contingency Planning (CP) family -->
+      <with-id>cp-1</with-id>
+      <with-id>cp-9</with-id>   <!-- System Backup -->
+
+      <!-- Identification and Authentication (IA) family -->
+      <with-id>ia-1</with-id>
+      <with-id>ia-2</with-id>   <!-- User Identification and Authentication -->
+      <with-id>ia-5</with-id>   <!-- Authenticator Management -->
+
+      <!-- Incident Response (IR) family -->
+      <with-id>ir-1</with-id>
+      <with-id>ir-4</with-id>   <!-- Incident Handling -->
+      <with-id>ir-6</with-id>   <!-- Incident Reporting -->
+
+      <!-- Maintenance (MA) family -->
+      <with-id>ma-1</with-id>
+
+      <!-- Media Protection (MP) family -->
+      <with-id>mp-1</with-id>
+
+      <!-- Physical and Environmental Protection (PE) family -->
+      <with-id>pe-1</with-id>
+
+      <!-- Planning (PL) family -->
+      <with-id>pl-1</with-id>
+      <with-id>pl-2</with-id>   <!-- System Security Plan -->
+
+      <!-- Personnel Security (PS) family -->
+      <with-id>ps-1</with-id>
+
+      <!-- Risk Assessment (RA) family -->
+      <with-id>ra-1</with-id>
+      <with-id>ra-3</with-id>   <!-- Risk Assessment -->
+      <with-id>ra-5</with-id>   <!-- Vulnerability Monitoring and Scanning -->
+
+      <!-- System and Services Acquisition (SA) family -->
+      <with-id>sa-1</with-id>
+
+      <!-- System and Communications Protection (SC) family -->
+      <with-id>sc-1</with-id>
+      <with-id>sc-7</with-id>   <!-- Boundary Protection -->
+      <with-id>sc-8</with-id>   <!-- Transmission Confidentiality and Integrity -->
+      <with-id>sc-13</with-id>  <!-- Cryptographic Protection -->
+
+      <!-- System and Information Integrity (SI) family -->
+      <with-id>si-1</with-id>
+      <with-id>si-2</with-id>   <!-- Flaw Remediation -->
+      <with-id>si-3</with-id>   <!-- Malicious Code Protection -->
+      <with-id>si-4</with-id>   <!-- System Monitoring -->
+
+      <!-- Supply Chain Risk Management (SR) family -->
+      <with-id>sr-1</with-id>
+    </include-controls>
+  </import>
+
+  <!-- ========================================
+       MERGE: How to combine controls from imports
+       as-is=true preserves the source structure
+       ======================================== -->
+  <merge>
+    <as-is>true</as-is>
+  </merge>
+
+  <!-- ========================================
+       MODIFY: Customize controls for this baseline
+       ======================================== -->
+  <modify>
+    <!-- Set organization-defined parameter values -->
+
+    <!-- AC-1: Who defines access control policy -->
+    <set-parameter param-id="ac-1_prm_1">
+      <value>Chief Information Security Officer (CISO)</value>
+    </set-parameter>
+
+    <!-- AC-2: Types of accounts requiring management -->
+    <set-parameter param-id="ac-2_prm_1">
+      <value>privileged accounts</value>
+      <value>shared accounts</value>
+      <value>group accounts</value>
+      <value>temporary accounts</value>
+      <value>service accounts</value>
+    </set-parameter>
+
+    <!-- AC-2: Attributes to track for accounts -->
+    <set-parameter param-id="ac-2_prm_2">
+      <value>access authorizations</value>
+      <value>role membership</value>
+      <value>access attributes</value>
+    </set-parameter>
+
+    <!-- AC-7: Failed login attempt thresholds -->
+    <set-parameter param-id="ac-7_prm_1">
+      <value>3</value>
+    </set-parameter>
+    <set-parameter param-id="ac-7_prm_2">
+      <value>15 minutes</value>
+    </set-parameter>
+
+    <!-- AU-2: Events to audit -->
+    <set-parameter param-id="au-2_prm_1">
+      <value>successful and unsuccessful logon attempts</value>
+      <value>privileged function executions</value>
+      <value>security-relevant configuration changes</value>
+      <value>access to audit logs</value>
+    </set-parameter>
+
+    <!-- AU-6: Audit review frequency -->
+    <set-parameter param-id="au-6_prm_1">
+      <value>weekly</value>
+    </set-parameter>
+
+    <!-- CA-7: Continuous monitoring frequency -->
+    <set-parameter param-id="ca-7_prm_1">
+      <value>monthly</value>
+    </set-parameter>
+
+    <!-- IA-5: Authenticator change timeframe -->
+    <set-parameter param-id="ia-5_prm_1">
+      <value>within 24 hours of initial issuance</value>
+    </set-parameter>
+
+    <!-- RA-5: Vulnerability scanning frequency -->
+    <set-parameter param-id="ra-5_prm_1">
+      <value>monthly or when significant changes occur</value>
+    </set-parameter>
+
+    <!-- SI-2: Patch management timeframes -->
+    <set-parameter param-id="si-2_prm_1">
+      <value>within 30 days of release for critical patches</value>
+      <value>within 90 days for non-critical patches</value>
+    </set-parameter>
+
+    <!-- Add organization-specific requirements to controls -->
+
+    <!-- AC-1: Add annual review requirement -->
+    <alter control-id="ac-1">
+      <add position="ending">
+        <part id="ac-1_org_req" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="Organization-Defined"/>
+          <p>The organization shall review and update access control policies annually or when significant changes to the information system occur.</p>
+        </part>
+      </add>
+    </alter>
+
+    <!-- IA-2: Add MFA requirement -->
+    <alter control-id="ia-2">
+      <add position="ending">
+        <part id="ia-2_org_req" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <p>Multi-factor authentication is required for all privileged access and remote access to organizational systems.</p>
+        </part>
+      </add>
+    </alter>
+  </modify>
+
+  <!-- ========================================
+       BACK-MATTER: References and resources
+       ======================================== -->
+  <back-matter>
+    <resource uuid="aaaaaaaa-bbbb-4ccc-8ddd-eeeeeeeeeeee">
+      <title>NIST SP 800-53 Rev 5</title>
+      <citation>
+        <text>Joint Task Force. Security and Privacy Controls for Information Systems and Organizations. NIST Special Publication 800-53, Revision 5. September 2020.</text>
+      </citation>
+      <rlink href="https://doi.org/10.6028/NIST.SP.800-53r5"/>
+    </resource>
+  </back-matter>
+
+</profile>
