@@ -209,6 +209,23 @@ NIST provides official OSCAL catalogs:
 **Sample catalogs for learning:**
 - [Example Catalog](https://github.com/usnistgov/oscal-content/tree/main/examples/catalog)
 
+## Local Examples
+
+Annotated sample catalog in this repository (all formats validated):
+
+| Format | File | Notes |
+|--------|------|-------|
+| YAML | `examples/catalog/sample-catalog.yaml` | Inline comments explaining each section |
+| XML | `examples/catalog/sample-catalog.xml` | Inline comments explaining each section |
+| JSON | `examples/catalog/sample-catalog.json` | No comments (JSON limitation) |
+
+These examples demonstrate:
+- Organizing controls into groups (families)
+- Defining controls with parameters, statements, and guidance
+- Adding control enhancements (nested controls)
+- Using constraints and select choices for parameters
+- Linking to back-matter resources
+
 ## Resources
 
 - [OSCAL Catalog Model Reference](https://pages.nist.gov/OSCAL/concepts/layer/control/catalog/)

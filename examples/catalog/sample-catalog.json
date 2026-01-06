@@ -1,0 +1,298 @@
+{
+  "catalog" : {
+    "metadata" : {
+      "roles" : [ {
+        "id" : "catalog-author",
+        "title" : "Catalog Author"
+      }, {
+        "id" : "control-owner",
+        "title" : "Control Owner"
+      } ],
+      "title" : "Sample Custom Security Control Catalog",
+      "responsible-parties" : [ {
+        "role-id" : "catalog-author",
+        "party-uuids" : [ "22222222-3333-4444-8555-666666666666" ]
+      } ],
+      "last-modified" : "2024-01-06T12:00:00Z",
+      "oscal-version" : "1.1.2",
+      "parties" : [ {
+        "name" : "Example Security Team",
+        "uuid" : "22222222-3333-4444-8555-666666666666",
+        "email-addresses" : [ "security@example.org" ],
+        "type" : "organization"
+      } ],
+      "version" : "1.0.0",
+      "remarks" : "This is a sample catalog demonstrating OSCAL catalog structure. It includes example controls for access control and audit logging."
+    },
+    "uuid" : "b5f2c3d4-e5f6-4a7b-8c9d-1a2b3c4d5e6f",
+    "groups" : [ {
+      "controls" : [ {
+        "props" : [ {
+          "name" : "label",
+          "value" : "AC-1"
+        }, {
+          "name" : "sort-id",
+          "value" : "ac-01.00.00"
+        } ],
+        "parts" : [ {
+          "name" : "statement",
+          "parts" : [ {
+            "name" : "item",
+            "prose" : "Develop, document, and disseminate to {{ insert: param, ac-1_prm_1 }} an access control policy that addresses purpose, scope, roles, responsibilities, and compliance.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "a."
+            } ],
+            "id" : "ac-1_smt.a"
+          }, {
+            "name" : "item",
+            "prose" : "Review and update the access control policy {{ insert: param, ac-1_prm_2 }}.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "b."
+            } ],
+            "id" : "ac-1_smt.b"
+          } ],
+          "id" : "ac-1_smt"
+        }, {
+          "name" : "guidance",
+          "prose" : "Access control policy can be included as part of the general security policy or be represented by multiple policies. Procedures can be documented in system security plans or in one or more separate documents.",
+          "id" : "ac-1_gdn"
+        } ],
+        "id" : "ac-1",
+        "class" : "policy",
+        "links" : [ {
+          "href" : "#bbbbbbbb-cccc-4ddd-8eee-ffffffffffff",
+          "text" : "NIST SP 800-53",
+          "rel" : "reference"
+        } ],
+        "title" : "Access Control Policy and Procedures",
+        "params" : [ {
+          "label" : "organization-defined personnel or roles",
+          "id" : "ac-1_prm_1",
+          "guidelines" : [ {
+            "prose" : "Specify the personnel or roles responsible for developing and maintaining access control policy."
+          } ]
+        }, {
+          "constraints" : [ {
+            "description" : "At least annually"
+          } ],
+          "label" : "organization-defined frequency",
+          "id" : "ac-1_prm_2",
+          "select" : {
+            "how-many" : "one",
+            "choice" : [ "annually", "semi-annually", "quarterly" ]
+          },
+          "guidelines" : [ {
+            "prose" : "Specify how often to review the policy (e.g., annually)."
+          } ]
+        } ]
+      }, {
+        "props" : [ {
+          "name" : "label",
+          "value" : "AC-2"
+        }, {
+          "name" : "sort-id",
+          "value" : "ac-02.00.00"
+        } ],
+        "parts" : [ {
+          "name" : "statement",
+          "parts" : [ {
+            "name" : "item",
+            "prose" : "Define and document the types of accounts allowed and specifically prohibited for use within the system.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "a."
+            } ],
+            "id" : "ac-2_smt.a"
+          }, {
+            "name" : "item",
+            "prose" : "Assign account managers for {{ insert: param, ac-2_prm_1 }}.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "b."
+            } ],
+            "id" : "ac-2_smt.b"
+          }, {
+            "name" : "item",
+            "prose" : "Review accounts for compliance {{ insert: param, ac-2_prm_2 }}.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "c."
+            } ],
+            "id" : "ac-2_smt.c"
+          } ],
+          "id" : "ac-2_smt"
+        }, {
+          "name" : "guidance",
+          "prose" : "Account management includes the identification of account types, establishing conditions for group membership, and assigning associated authorizations.",
+          "id" : "ac-2_gdn"
+        } ],
+        "id" : "ac-2",
+        "class" : "control",
+        "title" : "Account Management",
+        "params" : [ {
+          "label" : "organization-defined account types",
+          "id" : "ac-2_prm_1",
+          "guidelines" : [ {
+            "prose" : "Specify account types requiring special management (e.g., privileged, shared, service accounts)."
+          } ]
+        }, {
+          "label" : "organization-defined time period",
+          "id" : "ac-2_prm_2",
+          "guidelines" : [ {
+            "prose" : "Specify the review frequency for accounts."
+          } ]
+        } ],
+        "controls" : [ {
+          "props" : [ {
+            "name" : "label",
+            "value" : "AC-2(1)"
+          }, {
+            "name" : "sort-id",
+            "value" : "ac-02.01.00"
+          } ],
+          "parts" : [ {
+            "name" : "statement",
+            "prose" : "Employ automated mechanisms to support the management of system accounts.",
+            "id" : "ac-2.1_smt"
+          }, {
+            "name" : "guidance",
+            "prose" : "Automated account management reduces administrative overhead and improves consistency in applying account policies.",
+            "id" : "ac-2.1_gdn"
+          } ],
+          "id" : "ac-2.1",
+          "class" : "enhancement",
+          "title" : "Automated Account Management"
+        } ]
+      } ],
+      "class" : "family",
+      "id" : "ac",
+      "title" : "Access Control"
+    }, {
+      "controls" : [ {
+        "props" : [ {
+          "name" : "label",
+          "value" : "AU-1"
+        }, {
+          "name" : "sort-id",
+          "value" : "au-01.00.00"
+        } ],
+        "parts" : [ {
+          "name" : "statement",
+          "parts" : [ {
+            "name" : "item",
+            "prose" : "Develop, document, and disseminate to {{ insert: param, au-1_prm_1 }} an audit and accountability policy.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "a."
+            } ],
+            "id" : "au-1_smt.a"
+          }, {
+            "name" : "item",
+            "prose" : "Review and update the policy {{ insert: param, au-1_prm_2 }}.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "b."
+            } ],
+            "id" : "au-1_smt.b"
+          } ],
+          "id" : "au-1_smt"
+        } ],
+        "id" : "au-1",
+        "class" : "policy",
+        "title" : "Audit and Accountability Policy and Procedures",
+        "params" : [ {
+          "label" : "organization-defined personnel or roles",
+          "id" : "au-1_prm_1"
+        }, {
+          "label" : "organization-defined frequency",
+          "id" : "au-1_prm_2",
+          "select" : {
+            "how-many" : "one",
+            "choice" : [ "annually", "semi-annually" ]
+          }
+        } ]
+      }, {
+        "props" : [ {
+          "name" : "label",
+          "value" : "AU-2"
+        }, {
+          "name" : "sort-id",
+          "value" : "au-02.00.00"
+        } ],
+        "parts" : [ {
+          "name" : "statement",
+          "parts" : [ {
+            "name" : "item",
+            "prose" : "Identify the types of events that the system is capable of logging in support of the audit function.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "a."
+            } ],
+            "id" : "au-2_smt.a"
+          }, {
+            "name" : "item",
+            "prose" : "Coordinate the event logging function with other organizational entities requiring audit-related information.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "b."
+            } ],
+            "id" : "au-2_smt.b"
+          }, {
+            "name" : "item",
+            "prose" : "Specify {{ insert: param, au-2_prm_1 }} for logging within the system.",
+            "props" : [ {
+              "name" : "label",
+              "value" : "c."
+            } ],
+            "id" : "au-2_smt.c"
+          } ],
+          "id" : "au-2_smt"
+        }, {
+          "name" : "guidance",
+          "prose" : "Event logging requirements can be derived from applicable laws, regulations, policies, and organizational needs. Organizations should consider what events are needed to support investigations.",
+          "id" : "au-2_gdn"
+        } ],
+        "id" : "au-2",
+        "class" : "control",
+        "links" : [ {
+          "href" : "#bbbbbbbb-cccc-4ddd-8eee-ffffffffffff",
+          "rel" : "reference"
+        } ],
+        "title" : "Event Logging",
+        "params" : [ {
+          "label" : "organization-defined event types",
+          "id" : "au-2_prm_1",
+          "guidelines" : [ {
+            "prose" : "Specify event types to log (e.g., authentication events, privilege escalation, data access)."
+          } ]
+        } ]
+      } ],
+      "class" : "family",
+      "id" : "au",
+      "title" : "Audit and Accountability"
+    } ],
+    "back-matter" : {
+      "resources" : [ {
+        "citation" : {
+          "text" : "Joint Task Force. Security and Privacy Controls for Information Systems and Organizations. NIST Special Publication 800-53, Revision 5. September 2020."
+        },
+        "uuid" : "bbbbbbbb-cccc-4ddd-8eee-ffffffffffff",
+        "rlinks" : [ {
+          "href" : "https://doi.org/10.6028/NIST.SP.800-53r5"
+        } ],
+        "title" : "NIST SP 800-53 Rev 5"
+      }, {
+        "citation" : {
+          "text" : "NIST. Assessing Security and Privacy Controls in Information Systems and Organizations. NIST Special Publication 800-53A, Revision 5. January 2022."
+        },
+        "uuid" : "cccccccc-dddd-4eee-8fff-111111111111",
+        "rlinks" : [ {
+          "href" : "https://doi.org/10.6028/NIST.SP.800-53Ar5"
+        } ],
+        "title" : "NIST SP 800-53A Rev 5"
+      } ]
+    }
+  }
+}

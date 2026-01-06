@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Sample OSCAL Catalog - Custom Security Controls
+
+  This catalog demonstrates:
+  - Organizing controls into groups (families)
+  - Defining controls with parameters and statements
+  - Adding control enhancements
+  - Including guidance and references
+
+  Use as a template for creating custom control catalogs.
+-->
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="b5f2c3d4-e5f6-4a7b-8c9d-1a2b3c4d5e6f">
+
+  <!-- ========================================
+       METADATA: Catalog identification and provenance
+       ======================================== -->
+  <metadata>
+    <title>Sample Custom Security Control Catalog</title>
+    <last-modified>2024-01-06T12:00:00Z</last-modified>
+    <version>1.0.0</version>
+    <oscal-version>1.1.2</oscal-version>
+
+    <!-- Roles define responsibilities -->
+    <role id="catalog-author">
+      <title>Catalog Author</title>
+    </role>
+    <role id="control-owner">
+      <title>Control Owner</title>
+    </role>
+
+    <!-- Parties are organizations or individuals -->
+    <party uuid="22222222-3333-4444-8555-666666666666" type="organization">
+      <name>Example Security Team</name>
+      <email-address>security@example.org</email-address>
+    </party>
+
+    <!-- Link roles to parties -->
+    <responsible-party role-id="catalog-author">
+      <party-uuid>22222222-3333-4444-8555-666666666666</party-uuid>
+    </responsible-party>
+
+    <remarks>
+      <p>This is a sample catalog demonstrating OSCAL catalog structure.
+         It includes example controls for access control and audit logging.</p>
+    </remarks>
+  </metadata>
+
+  <!-- ========================================
+       GROUPS: Organize controls into families
+       ======================================== -->
+
+  <!-- Access Control Family -->
+  <group id="ac" class="family">
+    <title>Access Control</title>
+
+    <!-- ============================================
+         AC-1: Access Control Policy
+         ============================================ -->
+    <control id="ac-1" class="policy">
+      <title>Access Control Policy and Procedures</title>
+
+      <!-- Parameters allow customization -->
+      <param id="ac-1_prm_1">
+        <label>organization-defined personnel or roles</label>
+        <guideline>
+          <p>Specify the personnel or roles responsible for
+             developing and maintaining access control policy.</p>
+        </guideline>
+      </param>
+
+      <param id="ac-1_prm_2">
+        <label>organization-defined frequency</label>
+        <!-- Constraints limit allowed values -->
+        <constraint>
+          <description><p>At least annually</p></description>
+        </constraint>
+        <guideline>
+          <p>Specify how often to review the policy (e.g., annually).</p>
+        </guideline>
+        <!-- Select provides enumerated choices -->
+        <select how-many="one">
+          <choice>annually</choice>
+          <choice>semi-annually</choice>
+          <choice>quarterly</choice>
+        </select>
+      </param>
+
+      <!-- Properties add metadata -->
+      <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="AC-1"/>
+      <prop name="sort-id" ns="http://csrc.nist.gov/ns/oscal" value="ac-01.00.00"/>
+
+      <!-- Links reference back-matter resources by UUID -->
+      <link href="#bbbbbbbb-cccc-4ddd-8eee-ffffffffffff" rel="reference">
+        <text>NIST SP 800-53</text>
+      </link>
+
+      <!-- Control statement with sub-parts -->
+      <part id="ac-1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <part id="ac-1_smt.a" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="a."/>
+          <!-- insert element references parameters -->
+          <p>Develop, document, and disseminate to <insert type="param" id-ref="ac-1_prm_1"/>
+             an access control policy that addresses purpose, scope, roles,
+             responsibilities, and compliance.</p>
+        </part>
+        <part id="ac-1_smt.b" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="b."/>
+          <p>Review and update the access control policy <insert type="param" id-ref="ac-1_prm_2"/>.</p>
+        </part>
+      </part>
+
+      <!-- Guidance provides implementation context -->
+      <part id="ac-1_gdn" name="guidance" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Access control policy can be included as part of the general
+           security policy or be represented by multiple policies. Procedures
+           can be documented in system security plans or in one or more
+           separate documents.</p>
+      </part>
+    </control>
+
+    <!-- ============================================
+         AC-2: Account Management
+         ============================================ -->
+    <control id="ac-2" class="control">
+      <title>Account Management</title>
+
+      <param id="ac-2_prm_1">
+        <label>organization-defined account types</label>
+        <guideline>
+          <p>Specify account types requiring special management
+             (e.g., privileged, shared, service accounts).</p>
+        </guideline>
+      </param>
+
+      <param id="ac-2_prm_2">
+        <label>organization-defined time period</label>
+        <guideline>
+          <p>Specify the review frequency for accounts.</p>
+        </guideline>
+      </param>
+
+      <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="AC-2"/>
+      <prop name="sort-id" ns="http://csrc.nist.gov/ns/oscal" value="ac-02.00.00"/>
+
+      <part id="ac-2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <part id="ac-2_smt.a" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="a."/>
+          <p>Define and document the types of accounts allowed and
+             specifically prohibited for use within the system.</p>
+        </part>
+        <part id="ac-2_smt.b" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="b."/>
+          <p>Assign account managers for <insert type="param" id-ref="ac-2_prm_1"/>.</p>
+        </part>
+        <part id="ac-2_smt.c" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="c."/>
+          <p>Review accounts for compliance <insert type="param" id-ref="ac-2_prm_2"/>.</p>
+        </part>
+      </part>
+
+      <part id="ac-2_gdn" name="guidance" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Account management includes the identification of account types,
+           establishing conditions for group membership, and assigning
+           associated authorizations.</p>
+      </part>
+
+      <!-- Control Enhancement: Nested control extending the parent -->
+      <control id="ac-2.1" class="enhancement">
+        <title>Automated Account Management</title>
+
+        <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="AC-2(1)"/>
+        <prop name="sort-id" ns="http://csrc.nist.gov/ns/oscal" value="ac-02.01.00"/>
+
+        <part id="ac-2.1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+          <p>Employ automated mechanisms to support the management
+             of system accounts.</p>
+        </part>
+
+        <part id="ac-2.1_gdn" name="guidance" ns="http://csrc.nist.gov/ns/oscal">
+          <p>Automated account management reduces administrative overhead
+             and improves consistency in applying account policies.</p>
+        </part>
+      </control>
+    </control>
+  </group>
+
+  <!-- Audit and Accountability Family -->
+  <group id="au" class="family">
+    <title>Audit and Accountability</title>
+
+    <!-- ============================================
+         AU-1: Audit Policy
+         ============================================ -->
+    <control id="au-1" class="policy">
+      <title>Audit and Accountability Policy and Procedures</title>
+
+      <param id="au-1_prm_1">
+        <label>organization-defined personnel or roles</label>
+      </param>
+
+      <param id="au-1_prm_2">
+        <label>organization-defined frequency</label>
+        <select how-many="one">
+          <choice>annually</choice>
+          <choice>semi-annually</choice>
+        </select>
+      </param>
+
+      <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="AU-1"/>
+      <prop name="sort-id" ns="http://csrc.nist.gov/ns/oscal" value="au-01.00.00"/>
+
+      <part id="au-1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <part id="au-1_smt.a" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="a."/>
+          <p>Develop, document, and disseminate to <insert type="param" id-ref="au-1_prm_1"/>
+             an audit and accountability policy.</p>
+        </part>
+        <part id="au-1_smt.b" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="b."/>
+          <p>Review and update the policy <insert type="param" id-ref="au-1_prm_2"/>.</p>
+        </part>
+      </part>
+    </control>
+
+    <!-- ============================================
+         AU-2: Event Logging
+         ============================================ -->
+    <control id="au-2" class="control">
+      <title>Event Logging</title>
+
+      <param id="au-2_prm_1">
+        <label>organization-defined event types</label>
+        <guideline>
+          <p>Specify event types to log (e.g., authentication events,
+             privilege escalation, data access).</p>
+        </guideline>
+      </param>
+
+      <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="AU-2"/>
+      <prop name="sort-id" ns="http://csrc.nist.gov/ns/oscal" value="au-02.00.00"/>
+
+      <link href="#bbbbbbbb-cccc-4ddd-8eee-ffffffffffff" rel="reference"/>
+
+      <part id="au-2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <part id="au-2_smt.a" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="a."/>
+          <p>Identify the types of events that the system is capable of
+             logging in support of the audit function.</p>
+        </part>
+        <part id="au-2_smt.b" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="b."/>
+          <p>Coordinate the event logging function with other organizational
+             entities requiring audit-related information.</p>
+        </part>
+        <part id="au-2_smt.c" name="item" ns="http://csrc.nist.gov/ns/oscal">
+          <prop name="label" ns="http://csrc.nist.gov/ns/oscal" value="c."/>
+          <p>Specify <insert type="param" id-ref="au-2_prm_1"/> for logging
+             within the system.</p>
+        </part>
+      </part>
+
+      <part id="au-2_gdn" name="guidance" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Event logging requirements can be derived from applicable laws,
+           regulations, policies, and organizational needs. Organizations
+           should consider what events are needed to support investigations.</p>
+      </part>
+    </control>
+  </group>
+
+  <!-- ========================================
+       BACK-MATTER: References and resources
+       ======================================== -->
+  <back-matter>
+    <resource uuid="bbbbbbbb-cccc-4ddd-8eee-ffffffffffff">
+      <title>NIST SP 800-53 Rev 5</title>
+      <citation>
+        <text>Joint Task Force. Security and Privacy Controls for Information
+              Systems and Organizations. NIST Special Publication 800-53,
+              Revision 5. September 2020.</text>
+      </citation>
+      <rlink href="https://doi.org/10.6028/NIST.SP.800-53r5"/>
+    </resource>
+
+    <resource uuid="cccccccc-dddd-4eee-8fff-111111111111">
+      <title>NIST SP 800-53A Rev 5</title>
+      <citation>
+        <text>NIST. Assessing Security and Privacy Controls in Information
+              Systems and Organizations. NIST Special Publication 800-53A,
+              Revision 5. January 2022.</text>
+      </citation>
+      <rlink href="https://doi.org/10.6028/NIST.SP.800-53Ar5"/>
+    </resource>
+  </back-matter>
+
+</catalog>
