@@ -7,54 +7,177 @@ description: Use when running oscal-cli commands or working with OSCAL tooling
 
 The oscal-cli provides tools for validating, converting, and processing OSCAL documents.
 
-## Common Commands
+## Commands Overview
 
-### Validate an OSCAL Document
+| Command | Description |
+|---------|-------------|
+| `validate` | Check that an OSCAL instance is well-formed and valid |
+| `convert` | Convert OSCAL between formats (XML, JSON, YAML) |
+| `resolve-profile` | Resolve profile imports to produce a catalog |
+| `list-allowed-values` | List allowed value constraints for OSCAL models |
 
-```bash
-oscal-cli validate <oscal-file>
-```
+## Validate
 
-Validates against the appropriate OSCAL schema based on document type.
-
-### Convert Between Formats
-
-```bash
-oscal-cli convert --to json <oscal-xml-file>
-oscal-cli convert --to xml <oscal-json-file>
-oscal-cli convert --to yaml <oscal-file>
-```
-
-### Resolve a Profile
+Check that an OSCAL document is well-formed and valid:
 
 ```bash
-oscal-cli resolve-profile <profile-file> -o <output-catalog>
+oscal-cli validate <file-or-URI>
 ```
 
-Produces a resolved catalog from a profile and its imported catalogs.
+### Options
 
-## Validation Options
+| Option | Description |
+|--------|-------------|
+| `--as <FORMAT>` | Source format: XML, JSON, or YAML |
+| `-c <URL>` | Additional constraint definitions |
+| `-o <FILE>` | Write SARIF results to file |
+| `--sarif-include-pass` | Include pass results in SARIF output |
+| `--disable-schema-validation` | Skip schema validation |
+| `--disable-constraint-validation` | Skip constraint validation |
+| `--path-format <FORMAT>` | Path format: auto, metapath, xpath, jsonpointer |
+| `--threads <count>` | Parallel constraint validation threads (experimental) |
 
-- `--as <format>`: Specify input format (xml, json, yaml)
-- `--sarif`: Output results in SARIF format
-- `-o <file>`: Write output to file
+### Examples
 
-## Best Practices
+```bash
+# Validate any OSCAL document (auto-detects model type)
+oscal-cli validate ssp.json
 
-1. Always validate OSCAL documents before processing
-2. Use profile resolution to produce baseline catalogs
-3. Convert to JSON for programmatic processing
-4. Use XML for human-readable documentation
+# Validate with explicit format
+oscal-cli validate document.xml --as xml
+
+# Output SARIF results
+oscal-cli validate catalog.json -o results.sarif
+
+# Add custom constraints
+oscal-cli validate ssp.json -c custom-constraints.xml
+```
+
+## Convert
+
+Convert OSCAL documents between formats:
+
+```bash
+oscal-cli convert --to=<FORMAT> <source-file> [destination-file]
+```
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--to <FORMAT>` | Target format: XML, JSON, or YAML (required) |
+| `--overwrite` | Overwrite destination if it exists |
+
+### Examples
+
+```bash
+# Convert JSON to YAML
+oscal-cli convert --to=yaml catalog.json catalog.yaml
+
+# Convert XML to JSON
+oscal-cli convert --to=json ssp.xml ssp.json
+
+# Convert to YAML (output to stdout if no destination)
+oscal-cli convert --to=yaml profile.json
+```
+
+## Resolve Profile
+
+Resolve a profile's imports to produce a resolved catalog:
+
+```bash
+oscal-cli resolve-profile --to=<FORMAT> <profile-URI> [destination-file]
+```
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `--as <FORMAT>` | Source format: XML, JSON, or YAML |
+| `--to <FORMAT>` | Output format: XML, JSON, or YAML (required) |
+| `--overwrite` | Overwrite destination if it exists |
+| `--relative-to <URI>` | Generate URI references relative to this resource |
+| `--pretty-print` | Enable pretty-printing for readability |
+
+### Examples
+
+```bash
+# Resolve profile to JSON catalog
+oscal-cli resolve-profile --to=json profile.json resolved-catalog.json
+
+# Resolve with pretty printing
+oscal-cli resolve-profile --to=json --pretty-print profile.xml output.json
+```
+
+## List Allowed Values
+
+List allowed value constraints for OSCAL models:
+
+```bash
+oscal-cli list-allowed-values [destination-file]
+```
+
+### Options
+
+| Option | Description |
+|--------|-------------|
+| `-c <URL>` | Additional constraint definitions |
+| `--overwrite` | Overwrite destination if it exists |
+
+## Global Options
+
+Available for all commands:
+
+| Option | Description |
+|--------|-------------|
+| `-h, --help` | Display help message |
+| `--no-color` | Disable colorized output |
+| `-q, --quiet` | Minimize output to errors only |
+| `--show-stack-trace` | Show stack trace on errors |
+| `--version` | Display application version |
+
+## Common Workflows
+
+### Validate Before Converting
+
+```bash
+oscal-cli validate document.json && oscal-cli convert --to=yaml document.json document.yaml
+```
+
+### Profile Resolution Pipeline
+
+```bash
+# 1. Validate the profile
+oscal-cli validate profile.json
+
+# 2. Resolve to catalog
+oscal-cli resolve-profile --to=json profile.json resolved.json
+
+# 3. Validate the resolved catalog
+oscal-cli validate resolved.json
+```
+
+### Batch Validation
+
+```bash
+# Validate all JSON files in directory
+for f in *.json; do oscal-cli validate "$f"; done
+```
 
 ## Troubleshooting
 
-- **Validation errors**: Check document structure matches OSCAL schema
-- **Profile resolution failures**: Verify all imported catalogs/profiles are accessible
-- **Conversion issues**: Ensure source document is valid first
+| Issue | Solution |
+|-------|----------|
+| Validation errors | Check document structure against OSCAL schema |
+| Profile resolution failures | Verify all imported catalogs/profiles are accessible |
+| Conversion issues | Validate source document first |
+| Format detection fails | Use `--as` to specify source format explicitly |
 
 ## Related Skills
 
 | Task | Skill |
 |------|-------|
-| CLI commands (you are here) | `using-oscal-cli` |
-| Understanding OSCAL | `oscal-basics` (from `oscal` plugin) |
+| Understanding OSCAL models | `oscal-basics` (oscal plugin) |
+| Working with catalogs | `oscal-catalog` (oscal plugin) |
+| Working with profiles | `oscal-profile` (oscal plugin) |
+| Working with SSPs | `oscal-ssp` (oscal plugin) |
