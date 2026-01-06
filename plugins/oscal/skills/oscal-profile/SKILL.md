@@ -265,6 +265,22 @@ NIST and FedRAMP provide official OSCAL profiles:
 **Sample profiles for learning:**
 - [Example Profiles](https://github.com/usnistgov/oscal-content/tree/main/examples/profile)
 
+## Local Examples
+
+Annotated sample profiles in this repository (all formats validated):
+
+| Format | File | Notes |
+|--------|------|-------|
+| YAML | `examples/profile/sample-profile.yaml` | Inline comments explaining each section |
+| XML | `examples/profile/sample-profile.xml` | Inline comments explaining each section |
+| JSON | `examples/profile/sample-profile.json` | No comments (JSON limitation) |
+
+These examples demonstrate:
+- Importing controls from NIST SP 800-53 Rev 5
+- Selecting specific controls by ID
+- Setting organization-defined parameters
+- Adding organizational requirements via `alter`
+
 ## Resources
 
 - [OSCAL Profile Model Reference](https://pages.nist.gov/OSCAL/concepts/layer/control/profile/)

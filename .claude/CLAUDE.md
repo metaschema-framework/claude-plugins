@@ -58,7 +58,7 @@ claude plugin list
 
 ```bash
 # Using oscal-cli (preferred syntax without model prefix)
-oscal-cli validate examples/sample-profile.yaml
-oscal-cli convert --to=json examples/sample-profile.yaml output.json
+oscal-cli validate examples/profile/sample-profile.yaml
+oscal-cli convert --to=json examples/profile/sample-profile.yaml output.json
 oscal-cli resolve-profile --to=json profile.yaml resolved-catalog.json
 ```
