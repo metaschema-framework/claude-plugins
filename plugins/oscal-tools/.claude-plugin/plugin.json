@@ -8,6 +8,5 @@
   },
   "repository": "https://github.com/metaschema-framework/claude-plugins",
   "license": "Apache-2.0",
-  "keywords": ["oscal", "oscal-cli", "cli", "tools", "validation", "security"],
-  "relatedPlugins": ["metaschema-framework:oscal"]
+  "keywords": ["oscal", "oscal-cli", "cli", "tools", "validation", "security"]
 }
