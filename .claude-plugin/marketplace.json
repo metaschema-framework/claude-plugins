@@ -1,61 +1,38 @@
 {
   "name": "metaschema-framework",
-  "id": "metaschema-framework",
   "description": "Claude plugins for Metaschema and OSCAL development",
   "owner": {
     "name": "Metaschema Framework",
     "url": "https://github.com/metaschema-framework"
   },
+  "metadata": {
+    "pluginRoot": "./plugins"
+  },
   "plugins": [
     {
       "name": "metaschema",
       "description": "Skills for understanding Metaschema specifications",
-      "version": "0.1.0",
-      "source": "./plugins/metaschema",
-      "author": {
-        "name": "Metaschema Framework",
-        "url": "https://github.com/metaschema-framework"
-      }
+      "source": "metaschema"
     },
     {
       "name": "metaschema-tools",
       "description": "CLI and Java library skills for metaschema-java",
-      "version": "0.1.0",
-      "source": "./plugins/metaschema-tools",
-      "author": {
-        "name": "Metaschema Framework",
-        "url": "https://github.com/metaschema-framework"
-      }
+      "source": "metaschema-tools"
     },
     {
       "name": "oscal",
       "description": "Skills for understanding OSCAL security models",
-      "version": "0.1.0",
-      "source": "./plugins/oscal",
-      "author": {
-        "name": "Metaschema Framework",
-        "url": "https://github.com/metaschema-framework"
-      }
+      "source": "oscal"
     },
     {
       "name": "oscal-tools",
       "description": "CLI skills for oscal-cli",
-      "version": "0.1.0",
-      "source": "./plugins/oscal-tools",
-      "author": {
-        "name": "Metaschema Framework",
-        "url": "https://github.com/metaschema-framework"
-      }
+      "source": "oscal-tools"
     },
     {
       "name": "dev-metaschema",
       "description": "Development workflow skills for metaschema-framework contributors",
-      "version": "0.1.0",
-      "source": "./plugins/dev-metaschema",
-      "author": {
-        "name": "Metaschema Framework",
-        "url": "https://github.com/metaschema-framework"
-      }
+      "source": "dev-metaschema"
     }
   ]
 }
