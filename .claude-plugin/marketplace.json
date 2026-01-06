@@ -1,5 +1,6 @@
 {
   "name": "metaschema-framework",
+  "id": "metaschema-framework",
   "description": "Claude plugins for Metaschema and OSCAL development",
   "owner": {
     "name": "Metaschema Framework",
