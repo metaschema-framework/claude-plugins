@@ -1,0 +1,268 @@
+# ============================================================================
+# Sample OSCAL Mapping - Framework Crosswalk
+#
+# This mapping collection demonstrates the OSCAL mapping model features:
+# - Required provenance with method, matching-rationale, status, and description
+# - Source and target resource references with type
+# - All relationship types (equivalent-to, subset-of, superset-of, intersects-with)
+# - Multiple sources and targets in a single map
+# - Confidence scores (category or percentage)
+# - Gap identification using no-relationship
+# - Remarks explaining mapping decisions
+#
+# Maps controls between Framework A (source) and Framework B (target).
+# Based on NIST IR 8477 set theory relationship mapping methodology.
+# ============================================================================
+
+---
+mapping-collection:
+  uuid: 33333333-cccc-4ddd-8eee-ffffffffffff
+
+  # ==========================================================================
+  # METADATA: Mapping collection identification
+  # ==========================================================================
+  metadata:
+    title: Framework A to Framework B Control Mapping
+    last-modified: "2024-01-06T12:00:00Z"
+    version: 1.0.0
+    oscal-version: 1.1.2
+
+    roles:
+      - id: mapping-author
+        title: Mapping Author
+      - id: mapping-reviewer
+        title: Mapping Reviewer
+
+    parties:
+      - uuid: 44444444-dddd-4eee-8fff-000000000000
+        type: organization
+        name: Security Compliance Team
+
+    responsible-parties:
+      - role-id: mapping-author
+        party-uuids:
+          - 44444444-dddd-4eee-8fff-000000000000
+
+    remarks: >-
+      This mapping establishes relationships between controls in Framework A
+      (a custom security framework) and Framework B (an ISO-style framework).
+      Use this mapping for compliance gap analysis and framework migration.
+
+  # ==========================================================================
+  # PROVENANCE: Required mapping methodology information
+  # Describes how the mapping was created and its current status
+  # ==========================================================================
+  provenance:
+    # Method: How was this mapping created? (required)
+    # Values: human | automation | hybrid
+    method: human
+
+    # Matching Rationale: How were relationships determined? (required)
+    # Values: syntactic | semantic | functional
+    matching-rationale: semantic
+
+    # Status: Current state of the mapping (required)
+    # Values: complete | not-complete | draft | deprecated | superseded
+    status: complete
+
+    # Mapping Description: Context and intended use (required)
+    mapping-description: >-
+      This mapping establishes semantic relationships between Framework A
+      (a custom organizational security framework) and Framework B (an
+      ISO-style security framework). The mapping was created through manual
+      analysis of control requirements and their functional equivalence.
+      Use this mapping for compliance gap analysis, framework migration,
+      and multi-framework compliance demonstrations.
+
+  # ==========================================================================
+  # MAPPINGS: Define control relationships
+  # ==========================================================================
+  mappings:
+    # ------------------------------------------------------------------
+    # Primary Mapping: Framework A to Framework B
+    # ------------------------------------------------------------------
+    - uuid: 55555555-eeee-4fff-8000-111111111111
+
+      # Source catalog reference (type is required, title not supported)
+      source-resource:
+        type: catalog
+        href: "./source-catalog.yaml"
+
+      # Target catalog reference
+      target-resource:
+        type: catalog
+        href: "./target-catalog.yaml"
+
+      # Individual control mappings
+      maps:
+        # ============================================
+        # EQUIVALENT-TO relationship
+        # Controls have the same effective meaning
+        # ============================================
+        - uuid: aaaaaaaa-1111-4222-8333-444444444444
+          # Relationship at the map level (not nested under targets)
+          relationship: equivalent-to
+          # Sources is a list (can have multiple)
+          sources:
+            - type: control
+              id-ref: A.1
+          # Targets is a list (can have multiple)
+          targets:
+            - type: control
+              id-ref: A.9.1
+          # Confidence score as complex object with category flag
+          confidence-score:
+            category: high
+          remarks: >-
+            Framework A's Access Policy (A.1) is equivalent to
+            Framework B's Access Control Policy (A.9.1).
+            Both require establishing and maintaining access policies.
+
+        # ============================================
+        # SUBSET-OF relationship
+        # Source is narrower than target (target covers more)
+        # ============================================
+        - uuid: bbbbbbbb-2222-4333-8444-555555555555
+          relationship: subset-of
+          sources:
+            - type: control
+              id-ref: A.3
+          targets:
+            - type: control
+              id-ref: A.9.2.2
+          confidence-score:
+            category: high
+          remarks: >-
+            Framework A's Privileged Access (A.3) is a subset of
+            Framework B's Privileged Access Management (A.9.2.2).
+            The target control includes additional requirements
+            for allocation procedures.
+
+        # ============================================
+        # SUPERSET-OF relationship
+        # Source is broader than target (source covers more)
+        # ============================================
+        - uuid: cccccccc-3333-4444-8555-666666666666
+          relationship: superset-of
+          sources:
+            - type: control
+              id-ref: L.1
+          targets:
+            - type: control
+              id-ref: A.12.4.1
+          # Confidence score using percentage instead of category
+          confidence-score:
+            percentage: 0.85
+          remarks: >-
+            Framework A's Audit Logging (L.1) is a superset of
+            Framework B's Event Logging (A.12.4.1). The source
+            control broadly covers logging requirements that
+            the target addresses more specifically.
+
+        # ============================================
+        # INTERSECTS-WITH relationship
+        # Partial overlap between controls
+        # ============================================
+        - uuid: dddddddd-4444-4555-8666-777777777777
+          relationship: intersects-with
+          sources:
+            - type: control
+              id-ref: L.2
+          targets:
+            - type: control
+              id-ref: A.12.4.3
+          confidence-score:
+            category: medium
+          remarks: >-
+            Framework A's Log Review (L.2) intersects with
+            Framework B's Administrator Logs (A.12.4.3).
+            Both require log review, but A.12.4.3 focuses
+            specifically on administrator activities while
+            L.2 covers broader security incident detection.
+
+        # ============================================
+        # MULTIPLE SOURCES AND TARGETS
+        # One map can relate multiple controls
+        # ============================================
+        - uuid: eeeeeeee-5555-4666-8777-888888888888
+          relationship: intersects-with
+          # Multiple sources possible
+          sources:
+            - type: control
+              id-ref: A.2
+          # Multiple targets
+          targets:
+            - type: control
+              id-ref: A.9.2.1
+            - type: control
+              id-ref: A.9.4.2
+          confidence-score:
+            category: medium
+          remarks: >-
+            Framework A's User Authentication (A.2) maps to multiple
+            Framework B controls because it combines user registration
+            and authentication requirements that Framework B separates.
+
+        # ============================================
+        # NO-RELATIONSHIP (Gap identification)
+        # Source control with no equivalent target
+        # Note: targets must have at least 1 item, use a placeholder
+        # ============================================
+        - uuid: ffffffff-6666-4777-8888-999999999999
+          relationship: no-relationship
+          sources:
+            - type: control
+              id-ref: D.1
+          # For gaps, reference a related but non-equivalent control
+          targets:
+            - type: control
+              id-ref: A.8.2.1
+          confidence-score:
+            category: high
+          remarks: >-
+            COVERAGE GAP: Framework A's Data Classification (D.1)
+            has no direct equivalent in Framework B's scope.
+            Framework B's A.8.2.1 addresses information classification
+            but from an asset management perspective rather than
+            data protection. Organizations implementing Framework B
+            should add supplementary data classification controls.
+
+        # ============================================
+        # STATEMENT-LEVEL mapping (more granular)
+        # Map specific parts of controls
+        # ============================================
+        - uuid: 00000000-7777-4888-8999-aaaaaaaaaaaa
+          relationship: intersects-with
+          # Map at statement level for precision
+          sources:
+            - type: statement
+              id-ref: D.2_smt
+          targets:
+            - type: control
+              id-ref: A.10.1.1
+            - type: control
+              id-ref: A.10.1.2
+          confidence-score:
+            percentage: 0.85
+          remarks: >-
+            The encryption statement from D.2 maps to both
+            cryptography policy (A.10.1.1) and key management
+            (A.10.1.2) controls in Framework B.
+
+  # ==========================================================================
+  # BACK-MATTER: References and resources
+  # ==========================================================================
+  back-matter:
+    resources:
+      - uuid: 77777777-aaaa-4bbb-8ccc-dddddddddddd
+        title: Mapping Methodology Guide
+        remarks: >-
+          This mapping follows NIST IR 8477 set theory relationship
+          mapping methodology. Relationships are assigned based on
+          semantic analysis of functional equivalence.
+
+      - uuid: 88888888-bbbb-4ccc-8ddd-eeeeeeeeeeee
+        title: Gap Analysis Report
+        remarks: >-
+          Detailed gap analysis identifying controls in each framework
+          that lack equivalents in the other framework.

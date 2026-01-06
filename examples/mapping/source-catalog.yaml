@@ -1,0 +1,85 @@
+# ============================================================================
+# Source Catalog - Framework A (Custom Security Controls)
+#
+# This is a simple catalog used as the SOURCE in the mapping example.
+# It represents a custom organizational security framework.
+# ============================================================================
+
+---
+catalog:
+  uuid: 11111111-aaaa-4bbb-8ccc-dddddddddddd
+  metadata:
+    title: Framework A - Custom Security Controls
+    last-modified: "2024-01-06T12:00:00Z"
+    version: 1.0.0
+    oscal-version: 1.1.2
+    remarks: >-
+      A simple custom security framework used to demonstrate
+      OSCAL control mappings.
+
+  groups:
+    - id: access
+      title: Access Management
+      controls:
+        - id: A.1
+          title: Access Policy
+          parts:
+            - id: A.1_smt
+              name: statement
+              prose: >-
+                Establish and maintain an access control policy that defines
+                how access to systems and data is managed.
+
+        - id: A.2
+          title: User Authentication
+          parts:
+            - id: A.2_smt
+              name: statement
+              prose: >-
+                Require authentication for all users accessing organizational systems.
+
+        - id: A.3
+          title: Privileged Access
+          parts:
+            - id: A.3_smt
+              name: statement
+              prose: >-
+                Restrict and monitor privileged access to critical systems.
+
+    - id: logging
+      title: Logging and Monitoring
+      controls:
+        - id: L.1
+          title: Audit Logging
+          parts:
+            - id: L.1_smt
+              name: statement
+              prose: >-
+                Enable audit logging for security-relevant events on all systems.
+
+        - id: L.2
+          title: Log Review
+          parts:
+            - id: L.2_smt
+              name: statement
+              prose: >-
+                Review audit logs regularly to identify potential security incidents.
+
+    - id: data
+      title: Data Protection
+      controls:
+        - id: D.1
+          title: Data Classification
+          parts:
+            - id: D.1_smt
+              name: statement
+              prose: >-
+                Classify data based on sensitivity and apply appropriate protections.
+
+        - id: D.2
+          title: Encryption
+          parts:
+            - id: D.2_smt
+              name: statement
+              prose: >-
+                Encrypt sensitive data at rest and in transit.

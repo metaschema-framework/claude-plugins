@@ -1,0 +1,154 @@
+{
+  "catalog" : {
+    "metadata" : {
+      "oscal-version" : "1.1.2",
+      "last-modified" : "2024-01-06T12:00:00Z",
+      "title" : "Framework B - ISO-style Security Controls",
+      "remarks" : "An ISO-style security framework used to demonstrate OSCAL control mappings as the target framework.",
+      "version" : "1.0.0"
+    },
+    "groups" : [ {
+      "title" : "Access Control",
+      "id" : "A.9",
+      "controls" : [ {
+        "parts" : [ {
+          "prose" : "An access control policy shall be established, documented, and reviewed based on business and security requirements.",
+          "name" : "statement",
+          "id" : "A.9.1_smt"
+        } ],
+        "title" : "Access Control Policy",
+        "id" : "A.9.1"
+      }, {
+        "parts" : [ {
+          "prose" : "User access management controls shall be established.",
+          "name" : "statement",
+          "id" : "A.9.2_smt"
+        } ],
+        "controls" : [ {
+          "parts" : [ {
+            "prose" : "A formal user registration and de-registration process shall be implemented.",
+            "name" : "statement",
+            "id" : "A.9.2.1_smt"
+          } ],
+          "title" : "User Registration",
+          "id" : "A.9.2.1"
+        }, {
+          "parts" : [ {
+            "prose" : "The allocation and use of privileged access rights shall be restricted and controlled.",
+            "name" : "statement",
+            "id" : "A.9.2.2_smt"
+          } ],
+          "title" : "Privileged Access Management",
+          "id" : "A.9.2.2"
+        } ],
+        "title" : "User Access Management",
+        "id" : "A.9.2"
+      }, {
+        "parts" : [ {
+          "prose" : "System access controls shall be established.",
+          "name" : "statement",
+          "id" : "A.9.4_smt"
+        } ],
+        "controls" : [ {
+          "parts" : [ {
+            "prose" : "Access to systems shall be controlled by secure authentication procedures.",
+            "name" : "statement",
+            "id" : "A.9.4.2_smt"
+          } ],
+          "title" : "Secure Authentication",
+          "id" : "A.9.4.2"
+        } ],
+        "title" : "System Access Control",
+        "id" : "A.9.4"
+      } ]
+    }, {
+      "title" : "Operations Security",
+      "id" : "A.12",
+      "controls" : [ {
+        "parts" : [ {
+          "prose" : "Logging and monitoring controls shall be established.",
+          "name" : "statement",
+          "id" : "A.12.4_smt"
+        } ],
+        "controls" : [ {
+          "parts" : [ {
+            "prose" : "Event logs recording user activities, exceptions, and security events shall be produced and kept.",
+            "name" : "statement",
+            "id" : "A.12.4.1_smt"
+          } ],
+          "title" : "Event Logging",
+          "id" : "A.12.4.1"
+        }, {
+          "parts" : [ {
+            "prose" : "Logging facilities and log information shall be protected against tampering and unauthorized access.",
+            "name" : "statement",
+            "id" : "A.12.4.2_smt"
+          } ],
+          "title" : "Protection of Log Information",
+          "id" : "A.12.4.2"
+        }, {
+          "parts" : [ {
+            "prose" : "System administrator and operator activities shall be logged and regularly reviewed.",
+            "name" : "statement",
+            "id" : "A.12.4.3_smt"
+          } ],
+          "title" : "Administrator Logs",
+          "id" : "A.12.4.3"
+        } ],
+        "title" : "Logging and Monitoring",
+        "id" : "A.12.4"
+      } ]
+    }, {
+      "title" : "Asset Management",
+      "id" : "A.8",
+      "controls" : [ {
+        "parts" : [ {
+          "prose" : "Information classification controls shall be established.",
+          "name" : "statement",
+          "id" : "A.8.2_smt"
+        } ],
+        "controls" : [ {
+          "parts" : [ {
+            "prose" : "Information shall be classified in terms of legal requirements, value, criticality, and sensitivity.",
+            "name" : "statement",
+            "id" : "A.8.2.1_smt"
+          } ],
+          "title" : "Classification of Information",
+          "id" : "A.8.2.1"
+        } ],
+        "title" : "Information Classification",
+        "id" : "A.8.2"
+      } ]
+    }, {
+      "title" : "Cryptography",
+      "id" : "A.10",
+      "controls" : [ {
+        "parts" : [ {
+          "prose" : "Cryptographic controls shall be established.",
+          "name" : "statement",
+          "id" : "A.10.1_smt"
+        } ],
+        "controls" : [ {
+          "parts" : [ {
+            "prose" : "A policy on the use of cryptographic controls for protection of information shall be developed.",
+            "name" : "statement",
+            "id" : "A.10.1.1_smt"
+          } ],
+          "title" : "Policy on Cryptography",
+          "id" : "A.10.1.1"
+        }, {
+          "parts" : [ {
+            "prose" : "A policy on the use, protection, and lifetime of cryptographic keys shall be developed.",
+            "name" : "statement",
+            "id" : "A.10.1.2_smt"
+          } ],
+          "title" : "Key Management",
+          "id" : "A.10.1.2"
+        } ],
+        "title" : "Cryptographic Controls",
+        "id" : "A.10.1"
+      } ]
+    } ],
+    "uuid" : "22222222-bbbb-4ccc-8ddd-eeeeeeeeeeee"
+  }
+}

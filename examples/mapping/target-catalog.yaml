@@ -1,0 +1,157 @@
+# ============================================================================
+# Target Catalog - Framework B (ISO-style Controls)
+#
+# This is a simple catalog used as the TARGET in the mapping example.
+# It represents an ISO-style security framework with different structure.
+# ============================================================================
+
+---
+catalog:
+  uuid: 22222222-bbbb-4ccc-8ddd-eeeeeeeeeeee
+  metadata:
+    title: Framework B - ISO-style Security Controls
+    last-modified: "2024-01-06T12:00:00Z"
+    version: 1.0.0
+    oscal-version: 1.1.2
+    remarks: >-
+      An ISO-style security framework used to demonstrate
+      OSCAL control mappings as the target framework.
+
+  groups:
+    - id: A.9
+      title: Access Control
+      controls:
+        - id: A.9.1
+          title: Access Control Policy
+          parts:
+            - id: A.9.1_smt
+              name: statement
+              prose: >-
+                An access control policy shall be established, documented,
+                and reviewed based on business and security requirements.
+
+        - id: A.9.2
+          title: User Access Management
+          parts:
+            - id: A.9.2_smt
+              name: statement
+              prose: User access management controls shall be established.
+          controls:
+            # Sub-controls (like ISO structure)
+            - id: A.9.2.1
+              title: User Registration
+              parts:
+                - id: A.9.2.1_smt
+                  name: statement
+                  prose: >-
+                    A formal user registration and de-registration process
+                    shall be implemented.
+
+            - id: A.9.2.2
+              title: Privileged Access Management
+              parts:
+                - id: A.9.2.2_smt
+                  name: statement
+                  prose: >-
+                    The allocation and use of privileged access rights
+                    shall be restricted and controlled.
+
+        - id: A.9.4
+          title: System Access Control
+          parts:
+            - id: A.9.4_smt
+              name: statement
+              prose: System access controls shall be established.
+          controls:
+            - id: A.9.4.2
+              title: Secure Authentication
+              parts:
+                - id: A.9.4.2_smt
+                  name: statement
+                  prose: >-
+                    Access to systems shall be controlled by secure
+                    authentication procedures.
+
+    - id: A.12
+      title: Operations Security
+      controls:
+        - id: A.12.4
+          title: Logging and Monitoring
+          parts:
+            - id: A.12.4_smt
+              name: statement
+              prose: Logging and monitoring controls shall be established.
+          controls:
+            - id: A.12.4.1
+              title: Event Logging
+              parts:
+                - id: A.12.4.1_smt
+                  name: statement
+                  prose: >-
+                    Event logs recording user activities, exceptions,
+                    and security events shall be produced and kept.
+
+            - id: A.12.4.2
+              title: Protection of Log Information
+              parts:
+                - id: A.12.4.2_smt
+                  name: statement
+                  prose: >-
+                    Logging facilities and log information shall be
+                    protected against tampering and unauthorized access.
+
+            - id: A.12.4.3
+              title: Administrator Logs
+              parts:
+                - id: A.12.4.3_smt
+                  name: statement
+                  prose: >-
+                    System administrator and operator activities
+                    shall be logged and regularly reviewed.
+
+    - id: A.8
+      title: Asset Management
+      controls:
+        - id: A.8.2
+          title: Information Classification
+          parts:
+            - id: A.8.2_smt
+              name: statement
+              prose: Information classification controls shall be established.
+          controls:
+            - id: A.8.2.1
+              title: Classification of Information
+              parts:
+                - id: A.8.2.1_smt
+                  name: statement
+                  prose: >-
+                    Information shall be classified in terms of legal requirements,
+                    value, criticality, and sensitivity.
+
+    - id: A.10
+      title: Cryptography
+      controls:
+        - id: A.10.1
+          title: Cryptographic Controls
+          parts:
+            - id: A.10.1_smt
+              name: statement
+              prose: Cryptographic controls shall be established.
+          controls:
+            - id: A.10.1.1
+              title: Policy on Cryptography
+              parts:
+                - id: A.10.1.1_smt
+                  name: statement
+                  prose: >-
+                    A policy on the use of cryptographic controls for
+                    protection of information shall be developed.
+
+            - id: A.10.1.2
+              title: Key Management
+              parts:
+                - id: A.10.1.2_smt
+                  name: statement
+                  prose: >-
+                    A policy on the use, protection, and lifetime of
+                    cryptographic keys shall be developed.

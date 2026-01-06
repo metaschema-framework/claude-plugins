@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================================ -->
+<!-- Source Catalog - Framework A (Custom Security Controls)                       -->
+<!--                                                                               -->
+<!-- This is a simple catalog used as the SOURCE in the mapping example.          -->
+<!-- It represents a custom organizational security framework.                     -->
+<!-- ============================================================================ -->
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="11111111-aaaa-4bbb-8ccc-dddddddddddd">
+
+  <!-- ==========================================================================
+       METADATA: Catalog identification and versioning
+       ========================================================================== -->
+  <metadata>
+    <title>Framework A - Custom Security Controls</title>
+    <last-modified>2024-01-06T12:00:00Z</last-modified>
+    <version>1.0.0</version>
+    <oscal-version>1.1.2</oscal-version>
+    <remarks>
+      <p>A simple custom security framework used to demonstrate OSCAL control mappings.</p>
+    </remarks>
+  </metadata>
+
+  <!-- ==========================================================================
+       GROUP: Access Management
+       Simple flat group with three access-related controls
+       ========================================================================== -->
+  <group id="access">
+    <title>Access Management</title>
+
+    <!-- Control A.1: Access Policy
+         Maps to: Framework B A.9.1 (equivalent) -->
+    <control id="A.1">
+      <title>Access Policy</title>
+      <part id="A.1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Establish and maintain an access control policy that defines
+           how access to systems and data is managed.</p>
+      </part>
+    </control>
+
+    <!-- Control A.2: User Authentication
+         Maps to: Framework B A.9.2.1 + A.9.4.2 (multiple targets) -->
+    <control id="A.2">
+      <title>User Authentication</title>
+      <part id="A.2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Require authentication for all users accessing organizational systems.</p>
+      </part>
+    </control>
+
+    <!-- Control A.3: Privileged Access
+         Maps to: Framework B A.9.2.2 (subset - target is broader) -->
+    <control id="A.3">
+      <title>Privileged Access</title>
+      <part id="A.3_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Restrict and monitor privileged access to critical systems.</p>
+      </part>
+    </control>
+  </group>
+
+  <!-- ==========================================================================
+       GROUP: Logging and Monitoring
+       Controls for audit logging and review
+       ========================================================================== -->
+  <group id="logging">
+    <title>Logging and Monitoring</title>
+
+    <!-- Control L.1: Audit Logging
+         Maps to: Framework B A.12.4.1 (superset - source is broader) -->
+    <control id="L.1">
+      <title>Audit Logging</title>
+      <part id="L.1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Enable audit logging for security-relevant events on all systems.</p>
+      </part>
+    </control>
+
+    <!-- Control L.2: Log Review
+         Maps to: Framework B A.12.4.3 (intersects - partial overlap) -->
+    <control id="L.2">
+      <title>Log Review</title>
+      <part id="L.2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Review audit logs regularly to identify potential security incidents.</p>
+      </part>
+    </control>
+  </group>
+
+  <!-- ==========================================================================
+       GROUP: Data Protection
+       Controls for data classification and encryption
+       ========================================================================== -->
+  <group id="data">
+    <title>Data Protection</title>
+
+    <!-- Control D.1: Data Classification
+         COVERAGE GAP: No direct equivalent in Framework B -->
+    <control id="D.1">
+      <title>Data Classification</title>
+      <part id="D.1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Classify data based on sensitivity and apply appropriate protections.</p>
+      </part>
+    </control>
+
+    <!-- Control D.2: Encryption
+         Maps to: Framework B A.10.1.1 + A.10.1.2 (statement-level mapping) -->
+    <control id="D.2">
+      <title>Encryption</title>
+      <part id="D.2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Encrypt sensitive data at rest and in transit.</p>
+      </part>
+    </control>
+  </group>
+
+</catalog>

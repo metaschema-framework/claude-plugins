@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ============================================================================ -->
+<!-- Target Catalog - Framework B (ISO-style Controls)                             -->
+<!--                                                                               -->
+<!-- This is a simple catalog used as the TARGET in the mapping example.          -->
+<!-- It represents an ISO-style security framework with hierarchical structure.   -->
+<!-- ============================================================================ -->
+<catalog xmlns="http://csrc.nist.gov/ns/oscal/1.0"
+         uuid="22222222-bbbb-4ccc-8ddd-eeeeeeeeeeee">
+
+  <!-- ==========================================================================
+       METADATA: Catalog identification and versioning
+       ========================================================================== -->
+  <metadata>
+    <title>Framework B - ISO-style Security Controls</title>
+    <last-modified>2024-01-06T12:00:00Z</last-modified>
+    <version>1.0.0</version>
+    <oscal-version>1.1.2</oscal-version>
+    <remarks>
+      <p>An ISO-style security framework used to demonstrate
+         OSCAL control mappings as the target framework.</p>
+    </remarks>
+  </metadata>
+
+  <!-- ==========================================================================
+       GROUP A.9: Access Control
+       ISO-style hierarchical structure with nested controls
+       ========================================================================== -->
+  <group id="A.9">
+    <title>Access Control</title>
+
+    <!-- A.9.1: Access Control Policy
+         Mapped from: Framework A A.1 (equivalent) -->
+    <control id="A.9.1">
+      <title>Access Control Policy</title>
+      <part id="A.9.1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>An access control policy shall be established, documented,
+           and reviewed based on business and security requirements.</p>
+      </part>
+    </control>
+
+    <!-- A.9.2: User Access Management (parent control with sub-controls)
+         Parent controls in ISO-style frameworks contain nested controls -->
+    <control id="A.9.2">
+      <title>User Access Management</title>
+      <part id="A.9.2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>User access management controls shall be established.</p>
+      </part>
+
+      <!-- A.9.2.1: User Registration
+           Mapped from: Framework A A.2 (intersects - partial) -->
+      <control id="A.9.2.1">
+        <title>User Registration</title>
+        <part id="A.9.2.1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+          <p>A formal user registration and de-registration process
+             shall be implemented.</p>
+        </part>
+      </control>
+
+      <!-- A.9.2.2: Privileged Access Management
+           Mapped from: Framework A A.3 (subset - this control is broader) -->
+      <control id="A.9.2.2">
+        <title>Privileged Access Management</title>
+        <part id="A.9.2.2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+          <p>The allocation and use of privileged access rights
+             shall be restricted and controlled.</p>
+        </part>
+      </control>
+    </control>
+
+    <!-- A.9.4: System Access Control (parent control) -->
+    <control id="A.9.4">
+      <title>System Access Control</title>
+      <part id="A.9.4_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>System access controls shall be established.</p>
+      </part>
+
+      <!-- A.9.4.2: Secure Authentication
+           Mapped from: Framework A A.2 (intersects - partial) -->
+      <control id="A.9.4.2">
+        <title>Secure Authentication</title>
+        <part id="A.9.4.2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+          <p>Access to systems shall be controlled by secure
+             authentication procedures.</p>
+        </part>
+      </control>
+    </control>
+  </group>
+
+  <!-- ==========================================================================
+       GROUP A.12: Operations Security
+       Contains logging and monitoring controls
+       ========================================================================== -->
+  <group id="A.12">
+    <title>Operations Security</title>
+
+    <!-- A.12.4: Logging and Monitoring (parent control) -->
+    <control id="A.12.4">
+      <title>Logging and Monitoring</title>
+      <part id="A.12.4_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Logging and monitoring controls shall be established.</p>
+      </part>
+
+      <!-- A.12.4.1: Event Logging
+           Mapped from: Framework A L.1 (superset - source is broader) -->
+      <control id="A.12.4.1">
+        <title>Event Logging</title>
+        <part id="A.12.4.1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+          <p>Event logs recording user activities, exceptions,
+             and security events shall be produced and kept.</p>
+        </part>
+      </control>
+
+      <!-- A.12.4.2: Protection of Log Information
+           COVERAGE GAP (Reverse): No direct equivalent in Framework A -->
+      <control id="A.12.4.2">
+        <title>Protection of Log Information</title>
+        <part id="A.12.4.2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+          <p>Logging facilities and log information shall be
+             protected against tampering and unauthorized access.</p>
+        </part>
+      </control>
+
+      <!-- A.12.4.3: Administrator Logs
+           Mapped from: Framework A L.2 (intersects - partial overlap) -->
+      <control id="A.12.4.3">
+        <title>Administrator Logs</title>
+        <part id="A.12.4.3_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+          <p>System administrator and operator activities
+             shall be logged and regularly reviewed.</p>
+        </part>
+      </control>
+    </control>
+  </group>
+
+  <!-- ==========================================================================
+       GROUP A.8: Asset Management
+       Contains information classification controls
+       ========================================================================== -->
+  <group id="A.8">
+    <title>Asset Management</title>
+
+    <!-- A.8.2: Information Classification (parent control) -->
+    <control id="A.8.2">
+      <title>Information Classification</title>
+      <part id="A.8.2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Information classification controls shall be established.</p>
+      </part>
+
+      <!-- A.8.2.1: Classification of Information
+           Note: Different scope than Framework A D.1 (asset vs data focus) -->
+      <control id="A.8.2.1">
+        <title>Classification of Information</title>
+        <part id="A.8.2.1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+          <p>Information shall be classified in terms of legal requirements,
+             value, criticality, and sensitivity.</p>
+        </part>
+      </control>
+    </control>
+  </group>
+
+  <!-- ==========================================================================
+       GROUP A.10: Cryptography
+       Contains cryptographic controls
+       ========================================================================== -->
+  <group id="A.10">
+    <title>Cryptography</title>
+
+    <!-- A.10.1: Cryptographic Controls (parent control) -->
+    <control id="A.10.1">
+      <title>Cryptographic Controls</title>
+      <part id="A.10.1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+        <p>Cryptographic controls shall be established.</p>
+      </part>
+
+      <!-- A.10.1.1: Policy on Cryptography
+           Mapped from: Framework A D.2 statement (intersects - policy aspect) -->
+      <control id="A.10.1.1">
+        <title>Policy on Cryptography</title>
+        <part id="A.10.1.1_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+          <p>A policy on the use of cryptographic controls for
+             protection of information shall be developed.</p>
+        </part>
+      </control>
+
+      <!-- A.10.1.2: Key Management
+           Mapped from: Framework A D.2 statement (intersects - implementation aspect) -->
+      <control id="A.10.1.2">
+        <title>Key Management</title>
+        <part id="A.10.1.2_smt" name="statement" ns="http://csrc.nist.gov/ns/oscal">
+          <p>A policy on the use, protection, and lifetime of
+             cryptographic keys shall be developed.</p>
+        </part>
+      </control>
+    </control>
+  </group>
+
+</catalog>
