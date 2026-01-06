@@ -81,173 +81,180 @@ mapping-collection:
     # ------------------------------------------------------------------
     # Primary Mapping: Framework A to Framework B
     # ------------------------------------------------------------------
-    - uuid: 55555555-eeee-4fff-8000-111111111111
+    uuid: 55555555-eeee-4fff-8000-111111111111
 
-      # Source catalog reference (type is required, title not supported)
-      source-resource:
-        type: catalog
-        href: "./source-catalog.yaml"
+    # Source catalog reference (type is required, title not supported)
+    source-resource:
+      type: catalog
+      href: "./source-catalog.yaml"
 
-      # Target catalog reference
-      target-resource:
-        type: catalog
-        href: "./target-catalog.yaml"
+    # Target catalog reference
+    target-resource:
+      type: catalog
+      href: "./target-catalog.yaml"
 
-      # Individual control mappings
-      maps:
-        # ============================================
-        # EQUIVALENT-TO relationship
-        # Controls have the same effective meaning
-        # ============================================
-        - uuid: aaaaaaaa-1111-4222-8333-444444444444
-          # Relationship at the map level (not nested under targets)
-          relationship: equivalent-to
-          # Sources is a list (can have multiple)
-          sources:
-            - type: control
-              id-ref: A.1
-          # Targets is a list (can have multiple)
-          targets:
-            - type: control
-              id-ref: A.9.1
-          # Confidence score as complex object with category flag
-          confidence-score:
-            category: high
-          remarks: >-
-            Framework A's Access Policy (A.1) is equivalent to
-            Framework B's Access Control Policy (A.9.1).
-            Both require establishing and maintaining access policies.
+    # Individual control mappings
+    maps:
+      # ============================================
+      # EQUIVALENT-TO relationship
+      # Controls have the same effective meaning
+      # ============================================
+      - uuid: aaaaaaaa-1111-4222-8333-444444444444
+        # Relationship at the map level (not nested under targets)
+        relationship: equivalent-to
+        # Sources is a list (can have multiple)
+        sources:
+          - type: control
+            id-ref: A.1
+        # Targets is a list (can have multiple)
+        targets:
+          - type: control
+            id-ref: A.9.1
+        # Confidence score with STRVALUE and category flag
+        confidence-score:
+          STRVALUE: high
+          category: high
+        remarks: >-
+          Framework A's Access Policy (A.1) is equivalent to
+          Framework B's Access Control Policy (A.9.1).
+          Both require establishing and maintaining access policies.
 
-        # ============================================
-        # SUBSET-OF relationship
-        # Source is narrower than target (target covers more)
-        # ============================================
-        - uuid: bbbbbbbb-2222-4333-8444-555555555555
-          relationship: subset-of
-          sources:
-            - type: control
-              id-ref: A.3
-          targets:
-            - type: control
-              id-ref: A.9.2.2
-          confidence-score:
-            category: high
-          remarks: >-
-            Framework A's Privileged Access (A.3) is a subset of
-            Framework B's Privileged Access Management (A.9.2.2).
-            The target control includes additional requirements
-            for allocation procedures.
+      # ============================================
+      # SUBSET-OF relationship
+      # Source is narrower than target (target covers more)
+      # ============================================
+      - uuid: bbbbbbbb-2222-4333-8444-555555555555
+        relationship: subset-of
+        sources:
+          - type: control
+            id-ref: A.3
+        targets:
+          - type: control
+            id-ref: A.9.2.2
+        confidence-score:
+          STRVALUE: high
+          category: high
+        remarks: >-
+          Framework A's Privileged Access (A.3) is a subset of
+          Framework B's Privileged Access Management (A.9.2.2).
+          The target control includes additional requirements
+          for allocation procedures.
 
-        # ============================================
-        # SUPERSET-OF relationship
-        # Source is broader than target (source covers more)
-        # ============================================
-        - uuid: cccccccc-3333-4444-8555-666666666666
-          relationship: superset-of
-          sources:
-            - type: control
-              id-ref: L.1
-          targets:
-            - type: control
-              id-ref: A.12.4.1
-          # Confidence score using percentage instead of category
-          confidence-score:
-            percentage: 0.85
-          remarks: >-
-            Framework A's Audit Logging (L.1) is a superset of
-            Framework B's Event Logging (A.12.4.1). The source
-            control broadly covers logging requirements that
-            the target addresses more specifically.
+      # ============================================
+      # SUPERSET-OF relationship
+      # Source is broader than target (source covers more)
+      # ============================================
+      - uuid: cccccccc-3333-4444-8555-666666666666
+        relationship: superset-of
+        sources:
+          - type: control
+            id-ref: L.1
+        targets:
+          - type: control
+            id-ref: A.12.4.1
+        # Confidence score using percentage instead of category
+        confidence-score:
+          STRVALUE: "0.85"
+          percentage: 0.85
+        remarks: >-
+          Framework A's Audit Logging (L.1) is a superset of
+          Framework B's Event Logging (A.12.4.1). The source
+          control broadly covers logging requirements that
+          the target addresses more specifically.
 
-        # ============================================
-        # INTERSECTS-WITH relationship
-        # Partial overlap between controls
-        # ============================================
-        - uuid: dddddddd-4444-4555-8666-777777777777
-          relationship: intersects-with
-          sources:
-            - type: control
-              id-ref: L.2
-          targets:
-            - type: control
-              id-ref: A.12.4.3
-          confidence-score:
-            category: medium
-          remarks: >-
-            Framework A's Log Review (L.2) intersects with
-            Framework B's Administrator Logs (A.12.4.3).
-            Both require log review, but A.12.4.3 focuses
-            specifically on administrator activities while
-            L.2 covers broader security incident detection.
+      # ============================================
+      # INTERSECTS-WITH relationship
+      # Partial overlap between controls
+      # ============================================
+      - uuid: dddddddd-4444-4555-8666-777777777777
+        relationship: intersects-with
+        sources:
+          - type: control
+            id-ref: L.2
+        targets:
+          - type: control
+            id-ref: A.12.4.3
+        confidence-score:
+          STRVALUE: medium
+          category: medium
+        remarks: >-
+          Framework A's Log Review (L.2) intersects with
+          Framework B's Administrator Logs (A.12.4.3).
+          Both require log review, but A.12.4.3 focuses
+          specifically on administrator activities while
+          L.2 covers broader security incident detection.
 
-        # ============================================
-        # MULTIPLE SOURCES AND TARGETS
-        # One map can relate multiple controls
-        # ============================================
-        - uuid: eeeeeeee-5555-4666-8777-888888888888
-          relationship: intersects-with
-          # Multiple sources possible
-          sources:
-            - type: control
-              id-ref: A.2
-          # Multiple targets
-          targets:
-            - type: control
-              id-ref: A.9.2.1
-            - type: control
-              id-ref: A.9.4.2
-          confidence-score:
-            category: medium
-          remarks: >-
-            Framework A's User Authentication (A.2) maps to multiple
-            Framework B controls because it combines user registration
-            and authentication requirements that Framework B separates.
+      # ============================================
+      # MULTIPLE SOURCES AND TARGETS
+      # One map can relate multiple controls
+      # ============================================
+      - uuid: eeeeeeee-5555-4666-8777-888888888888
+        relationship: intersects-with
+        # Multiple sources possible
+        sources:
+          - type: control
+            id-ref: A.2
+        # Multiple targets
+        targets:
+          - type: control
+            id-ref: A.9.2.1
+          - type: control
+            id-ref: A.9.4.2
+        confidence-score:
+          STRVALUE: medium
+          category: medium
+        remarks: >-
+          Framework A's User Authentication (A.2) maps to multiple
+          Framework B controls because it combines user registration
+          and authentication requirements that Framework B separates.
 
-        # ============================================
-        # NO-RELATIONSHIP (Gap identification)
-        # Source control with no equivalent target
-        # Note: targets must have at least 1 item, use a placeholder
-        # ============================================
-        - uuid: ffffffff-6666-4777-8888-999999999999
-          relationship: no-relationship
-          sources:
-            - type: control
-              id-ref: D.1
-          # For gaps, reference a related but non-equivalent control
-          targets:
-            - type: control
-              id-ref: A.8.2.1
-          confidence-score:
-            category: high
-          remarks: >-
-            COVERAGE GAP: Framework A's Data Classification (D.1)
-            has no direct equivalent in Framework B's scope.
-            Framework B's A.8.2.1 addresses information classification
-            but from an asset management perspective rather than
-            data protection. Organizations implementing Framework B
-            should add supplementary data classification controls.
+      # ============================================
+      # NO-RELATIONSHIP (Gap identification)
+      # Source control with no equivalent target
+      # Note: targets must have at least 1 item, use a placeholder
+      # ============================================
+      - uuid: ffffffff-6666-4777-8888-999999999999
+        relationship: no-relationship
+        sources:
+          - type: control
+            id-ref: D.1
+        # For gaps, reference a related but non-equivalent control
+        targets:
+          - type: control
+            id-ref: A.8.2.1
+        confidence-score:
+          STRVALUE: high
+          category: high
+        remarks: >-
+          COVERAGE GAP: Framework A's Data Classification (D.1)
+          has no direct equivalent in Framework B's scope.
+          Framework B's A.8.2.1 addresses information classification
+          but from an asset management perspective rather than
+          data protection. Organizations implementing Framework B
+          should add supplementary data classification controls.
 
-        # ============================================
-        # STATEMENT-LEVEL mapping (more granular)
-        # Map specific parts of controls
-        # ============================================
-        - uuid: 00000000-7777-4888-8999-aaaaaaaaaaaa
-          relationship: intersects-with
-          # Map at statement level for precision
-          sources:
-            - type: statement
-              id-ref: D.2_smt
-          targets:
-            - type: control
-              id-ref: A.10.1.1
-            - type: control
-              id-ref: A.10.1.2
-          confidence-score:
-            percentage: 0.85
-          remarks: >-
-            The encryption statement from D.2 maps to both
-            cryptography policy (A.10.1.1) and key management
-            (A.10.1.2) controls in Framework B.
+      # ============================================
+      # STATEMENT-LEVEL mapping (more granular)
+      # Map specific parts of controls
+      # ============================================
+      - uuid: 00000000-7777-4888-8999-aaaaaaaaaaaa
+        relationship: intersects-with
+        # Map at statement level for precision
+        sources:
+          - type: statement
+            id-ref: D.2_smt
+        targets:
+          - type: control
+            id-ref: A.10.1.1
+          - type: control
+            id-ref: A.10.1.2
+        confidence-score:
+          STRVALUE: "0.85"
+          percentage: 0.85
+        remarks: >-
+          The encryption statement from D.2 maps to both
+          cryptography policy (A.10.1.1) and key management
+          (A.10.1.2) controls in Framework B.
 
   # ==========================================================================
   # BACK-MATTER: References and resources
@@ -256,6 +263,8 @@ mapping-collection:
     resources:
       - uuid: 77777777-aaaa-4bbb-8ccc-dddddddddddd
         title: Mapping Methodology Guide
+        rlinks:
+          - href: https://doi.org/10.6028/NIST.IR.8477
         remarks: >-
           This mapping follows NIST IR 8477 set theory relationship
           mapping methodology. Relationships are assigned based on
@@ -263,6 +272,8 @@ mapping-collection:
 
       - uuid: 88888888-bbbb-4ccc-8ddd-eeeeeeeeeeee
         title: Gap Analysis Report
+        rlinks:
+          - href: "#"
         remarks: >-
           Detailed gap analysis identifying controls in each framework
           that lack equivalents in the other framework.
