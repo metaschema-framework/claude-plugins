@@ -1,0 +1,27 @@
+{
+  "name": "metaschema-framework",
+  "description": "Claude plugins for Metaschema and OSCAL development",
+  "homepage": "https://github.com/metaschema-framework/claude-plugins",
+  "plugins": {
+    "metaschema": {
+      "path": "./plugins/metaschema",
+      "description": "Skills and agents for understanding Metaschema specifications"
+    },
+    "metaschema-tools": {
+      "path": "./plugins/metaschema-tools",
+      "description": "Commands and MCP servers for metaschema-java CLI integration"
+    },
+    "oscal": {
+      "path": "./plugins/oscal",
+      "description": "Skills and agents for understanding OSCAL security models"
+    },
+    "oscal-tools": {
+      "path": "./plugins/oscal-tools",
+      "description": "Commands and MCP servers for oscal-cli integration"
+    },
+    "dev-metaschema": {
+      "path": "./plugins/dev-metaschema",
+      "description": "Skills and agents for contributing to metaschema-framework repositories"
+    }
+  }
+}

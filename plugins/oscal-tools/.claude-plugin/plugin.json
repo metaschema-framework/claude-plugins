@@ -1,0 +1,13 @@
+{
+  "name": "oscal-tools",
+  "description": "Commands and MCP servers for oscal-cli integration",
+  "version": "0.1.0",
+  "author": {
+    "name": "Metaschema Framework",
+    "url": "https://github.com/metaschema-framework"
+  },
+  "repository": "https://github.com/metaschema-framework/claude-plugins",
+  "license": "Apache-2.0",
+  "keywords": ["oscal", "oscal-cli", "cli", "tools", "validation", "security"],
+  "relatedPlugins": ["metaschema-framework:oscal"]
+}
