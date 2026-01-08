@@ -12,27 +12,27 @@
     {
       "name": "metaschema",
       "description": "Skills for understanding Metaschema specifications",
-      "source": "metaschema"
+      "source": "./metaschema"
     },
     {
       "name": "metaschema-tools",
       "description": "CLI and Java library skills for metaschema-java",
-      "source": "metaschema-tools"
+      "source": "./metaschema-tools"
     },
     {
       "name": "oscal",
       "description": "Skills for understanding OSCAL security models",
-      "source": "oscal"
+      "source": "./oscal"
     },
     {
       "name": "oscal-tools",
       "description": "CLI skills for oscal-cli",
-      "source": "oscal-tools"
+      "source": "./oscal-tools"
     },
     {
       "name": "dev-metaschema",
       "description": "Development workflow skills for metaschema-framework contributors",
-      "source": "dev-metaschema"
+      "source": "./dev-metaschema"
     }
   ]
 }
