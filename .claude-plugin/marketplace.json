@@ -5,34 +5,31 @@
     "name": "Metaschema Framework",
     "url": "https://github.com/metaschema-framework"
   },
-  "metadata": {
-    "pluginRoot": "./plugins"
-  },
   "plugins": [
     {
       "name": "metaschema",
       "description": "Skills for understanding Metaschema specifications",
-      "source": "./metaschema"
+      "source": "./plugins/metaschema"
     },
     {
       "name": "metaschema-tools",
       "description": "CLI and Java library skills for metaschema-java",
-      "source": "./metaschema-tools"
+      "source": "./plugins/metaschema-tools"
     },
     {
       "name": "oscal",
       "description": "Skills for understanding OSCAL security models",
-      "source": "./oscal"
+      "source": "./plugins/oscal"
     },
     {
       "name": "oscal-tools",
       "description": "CLI skills for oscal-cli",
-      "source": "./oscal-tools"
+      "source": "./plugins/oscal-tools"
     },
     {
       "name": "dev-metaschema",
       "description": "Development workflow skills for metaschema-framework contributors",
-      "source": "./dev-metaschema"
+      "source": "./plugins/dev-metaschema"
     }
   ]
 }
