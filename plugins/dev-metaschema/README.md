@@ -46,6 +46,24 @@ Unit test patterns and coverage workflow:
 - Coverage expansion workflow
 - Test naming conventions
 
+### javadoc-style-guide
+
+Javadoc requirements and patterns:
+
+- Coverage requirements (blocking)
+- Structure and formatting rules
+- Tag order and content requirements
+- Common mistakes to avoid
+
+### claude-md-conventions
+
+CLAUDE.md file conventions:
+
+- What to include/exclude
+- Section structure and order
+- Formatting rules
+- Maintenance guidelines
+
 ### pr-feedback
 
 Workflow for addressing PR review feedback:
