@@ -1,7 +1,7 @@
 {
   "name": "dev-metaschema",
   "description": "Skills and agents for contributing to metaschema-framework repositories",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "author": {
     "name": "Metaschema Framework",
     "url": "https://github.com/metaschema-framework"
