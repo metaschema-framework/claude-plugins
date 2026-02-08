@@ -336,9 +336,6 @@ results:
 ```bash
 # Validate assessment results
 oscal-cli validate assessment-results.json
-
-# Validate assessment results structure
-oscal-cli validate assessment-results.json
 ```
 
 ## Official Examples

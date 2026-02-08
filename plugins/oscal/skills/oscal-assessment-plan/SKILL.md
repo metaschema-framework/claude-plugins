@@ -311,9 +311,6 @@ local-definitions:
 ```bash
 # Validate assessment plan
 oscal-cli validate assessment-plan.json
-
-# Validate assessment plan structure
-oscal-cli validate assessment-plan.json
 ```
 
 ## Official Examples

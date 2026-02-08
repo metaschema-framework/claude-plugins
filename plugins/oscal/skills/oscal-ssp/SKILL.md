@@ -155,7 +155,7 @@ system-implementation:
 ```yaml
 system-implementation:
   components:
-    # REQUIRED: this-system component must be first
+    # REQUIRED: every SSP must include a this-system component
     - uuid: "f8c9d0e1-2a3b-4c4d-e5f6-7a8b9c0d1e2f"
       type: this-system
       title: "Enterprise Management System"
@@ -236,8 +236,9 @@ control-implementation:
                 state: implemented
 ```
 
-> **Note:** `implementation-status` is only valid as a structured object (`{state: "..."}`) on
-> `by-components` entries. It is NOT a valid prop name on `implemented-requirements` or `statements`.
+> **Note:** In SSP `control-implementation`, `implementation-status` is a structured object
+> (`{state: "..."}`) on `by-components` entries — not a prop on `implemented-requirements` or
+> `statements`. Other OSCAL models may define their own usage.
 
 ### By-Components
 
@@ -331,7 +332,7 @@ metadata:
 
 ## Back Matter
 
-Back matter provides references and supporting documentation. Resources **must** include `rlinks` (resource links) to be valid:
+Back matter provides references and supporting documentation. Each resource **must** include at least one `rlinks` entry or `base64` content to be valid:
 
 ```yaml
 back-matter:

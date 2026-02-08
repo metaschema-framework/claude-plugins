@@ -356,9 +356,6 @@ props:
 ```bash
 # Validate POA&M
 oscal-cli validate poam.json
-
-# Validate POA&M structure
-oscal-cli validate poam.json
 ```
 
 ## Official Examples
