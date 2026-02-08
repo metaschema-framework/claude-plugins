@@ -29,7 +29,7 @@ assessment-plan:
   metadata:
     title: "System Assessment Plan"
     version: "1.0.0"
-    oscal-version: "1.1.2"
+    oscal-version: "1.2.0"
   import-ssp:
     href: "ssp.json"
   local-definitions: {}
@@ -312,8 +312,8 @@ local-definitions:
 # Validate assessment plan
 oscal-cli validate assessment-plan.json
 
-# Validate SSP reference
-oscal-cli validate assessment-plan.json --ssp system-ssp.json
+# Validate assessment plan structure
+oscal-cli validate assessment-plan.json
 ```
 
 ## Official Examples

@@ -38,7 +38,7 @@ catalog:
   metadata:
     title: "Catalog Title"
     version: "1.0.0"
-    oscal-version: "1.1.2"
+    oscal-version: "1.2.0"
   groups:           # Optional hierarchical organization
     - id: ac
       title: "Access Control"

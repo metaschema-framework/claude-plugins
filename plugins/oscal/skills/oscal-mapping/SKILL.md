@@ -35,7 +35,7 @@ mapping-collection:
   metadata:
     title: "Control Framework Mapping"
     version: "1.0.0"
-    oscal-version: "1.1.2"
+    oscal-version: "1.2.0"
   provenance:                              # REQUIRED
     method: human                          # human|automation|hybrid
     matching-rationale: semantic           # syntactic|semantic|functional
@@ -294,7 +294,7 @@ mapping-collection:
     title: "NIST 800-53 to ISO 27001 Mapping"
     last-modified: "2024-01-15T12:00:00Z"
     version: "1.0.0"
-    oscal-version: "1.1.2"
+    oscal-version: "1.2.0"
     remarks: "Framework crosswalk for compliance mapping"
 
   provenance:

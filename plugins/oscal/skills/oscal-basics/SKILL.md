@@ -95,7 +95,7 @@ Use oscal-cli to validate OSCAL documents:
 
 ```bash
 oscal-cli validate <document>
-oscal-cli validate ssp.json --profile baseline.json
+oscal-cli validate ssp.json
 oscal-cli resolve-profile profile.json -o resolved.json
 ```
 

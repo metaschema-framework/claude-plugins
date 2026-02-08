@@ -36,7 +36,7 @@ profile:
   metadata:
     title: "Baseline Profile"
     version: "1.0.0"
-    oscal-version: "1.1.2"
+    oscal-version: "1.2.0"
   imports:          # Source catalogs/profiles
     - href: "catalog.json"
       include-controls:
@@ -232,7 +232,7 @@ profile:
   metadata:
     title: "Custom Agency Baseline"
     version: "1.0.0"
-    oscal-version: "1.1.2"
+    oscal-version: "1.2.0"
   imports:
     - href: "https://raw.githubusercontent.com/GSA/fedramp-automation/master/dist/content/rev5/baselines/json/FedRAMP_rev5_MODERATE-baseline-resolved-profile_catalog.json"
       include-all: {}

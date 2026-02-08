@@ -29,7 +29,7 @@ assessment-results:
   metadata:
     title: "System Assessment Results"
     version: "1.0.0"
-    oscal-version: "1.1.2"
+    oscal-version: "1.2.0"
   import-ap:
     href: "assessment-plan.json"
   local-definitions: {}
@@ -337,8 +337,8 @@ results:
 # Validate assessment results
 oscal-cli validate assessment-results.json
 
-# Validate with assessment plan reference
-oscal-cli validate assessment-results.json --ap assessment-plan.json
+# Validate assessment results structure
+oscal-cli validate assessment-results.json
 ```
 
 ## Official Examples

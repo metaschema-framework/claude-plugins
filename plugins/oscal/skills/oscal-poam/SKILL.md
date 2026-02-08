@@ -28,7 +28,7 @@ plan-of-action-and-milestones:
   metadata:
     title: "System POA&M"
     version: "1.0.0"
-    oscal-version: "1.1.2"
+    oscal-version: "1.2.0"
   import-ssp:
     href: "ssp.json"
   system-id:
@@ -357,8 +357,8 @@ props:
 # Validate POA&M
 oscal-cli validate poam.json
 
-# Validate with SSP reference
-oscal-cli validate poam.json --ssp system-ssp.json
+# Validate POA&M structure
+oscal-cli validate poam.json
 ```
 
 ## Official Examples

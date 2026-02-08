@@ -42,10 +42,10 @@ component-definition:
   metadata:
     title: "Component Name"
     version: "1.0.0"
-    oscal-version: "1.1.2"
+    oscal-version: "1.2.0"
   import-component-definitions: []  # Reference other components
   components:
-    - uuid: component-uuid
+    - uuid: "a1b2c3d4-e5f6-4a7b-8c9d-0e1f2a3b4c5d"
       type: software
       title: "Product Name"
       description: "Product description"
@@ -71,14 +71,14 @@ components:
       - name: version
         value: "15.2"
     protocols:
-      - uuid: protocol-uuid
+      - uuid: "7a8b9c0d-1e2f-4a3b-c4d5-e6f7a8b9c0d1"
         name: https
         port-ranges:
           - start: 443
             end: 443
             transport: TCP
     control-implementations:
-      - uuid: impl-uuid
+      - uuid: "8b9c0d1e-2f3a-4b4c-d5e6-f7a8b9c0d1e2"
         source: "profile.json"
         description: "Controls implemented by this component"
         implemented-requirements: []
@@ -88,24 +88,21 @@ components:
 
 ```yaml
 control-implementations:
-  - uuid: "impl-uuid"
+  - uuid: "9c0d1e2f-3a4b-4c5d-e6f7-a8b9c0d1e2f3"
     source: "https://example.com/fedramp-moderate-profile.json"
     description: "FedRAMP Moderate controls implemented"
     props:
       - name: framework
         value: "FedRAMP"
     implemented-requirements:
-      - uuid: "req-uuid"
+      - uuid: "0d1e2f3a-4b5c-4d6e-f7a8-b9c0d1e2f3a4"
         control-id: ac-2
         description: "This component provides..."
-        props:
-          - name: implementation-status
-            value: implemented
         responsible-roles:
           - role-id: provider
         statements:
           - statement-id: ac-2_smt.a
-            uuid: stmt-uuid
+            uuid: "1e2f3a4b-5c6d-4e7f-a8b9-c0d1e2f3a4b5"
             description: "Account management is provided through..."
 ```
 
@@ -125,11 +122,11 @@ Define who is responsible for implementation aspects:
 
 ```yaml
 components:
-  - uuid: component-uuid
+  - uuid: "2f3a4b5c-6d7e-4f8a-b9c0-d1e2f3a4b5c6"
     responsible-roles:
       - role-id: provider
         party-uuids:
-          - party-uuid
+          - "3a4b5c6d-7e8f-4a9b-c0d1-e2f3a4b5c6d7"
         remarks: "Software vendor responsibility"
       - role-id: customer
         remarks: "Customer configuration responsibility"
@@ -141,17 +138,17 @@ Group related control implementations:
 
 ```yaml
 capabilities:
-  - uuid: capability-uuid
+  - uuid: "4b5c6d7e-8f9a-4b0c-d1e2-f3a4b5c6d7e8"
     name: "Encryption at Rest"
     description: "Data encryption capabilities"
     control-implementations:
-      - uuid: encryption-impl-uuid
+      - uuid: "5c6d7e8f-9a0b-4c1d-e2f3-a4b5c6d7e8f9"
         source: "profile.json"
         implemented-requirements:
           - control-id: sc-28
             description: "AES-256 encryption for stored data"
     incorporates-components:
-      - component-uuid: component-uuid
+      - component-uuid: "2f3a4b5c-6d7e-4f8a-b9c0-d1e2f3a4b5c6"
         description: "Database encryption module"
 ```
 
@@ -171,20 +168,20 @@ Document shared responsibilities:
 ```yaml
 implemented-requirements:
   - control-id: ac-2
-    uuid: req-uuid
+    uuid: "6d7e8f9a-0b1c-4d2e-f3a4-b5c6d7e8f9a0"
     description: "Account management implementation"
     props:
       - name: responsibility
         value: shared
     statements:
       - statement-id: ac-2_smt.a
-        uuid: stmt-uuid
+        uuid: "7e8f9a0b-1c2d-4e3f-a4b5-c6d7e8f9a0b1"
         description: "Provider manages service accounts"
         props:
           - name: responsibility
             value: provider
       - statement-id: ac-2_smt.b
-        uuid: stmt-uuid-2
+        uuid: "8f9a0b1c-2d3e-4f4a-b5c6-d7e8f9a0b1c2"
         description: "Customer manages user accounts"
         props:
           - name: responsibility
@@ -198,7 +195,7 @@ Components can set parameter values:
 ```yaml
 implemented-requirements:
   - control-id: ac-2
-    uuid: req-uuid
+    uuid: "9a0b1c2d-3e4f-4a5b-c6d7-e8f9a0b1c2d3"
     set-parameters:
       - param-id: ac-2_prm_1
         values:
@@ -226,9 +223,9 @@ component-definition:
   metadata:
     title: "Cloud Storage Service"
     version: "2.0.0"
-    oscal-version: "1.1.2"
+    oscal-version: "1.2.0"
   components:
-    - uuid: "cloud-storage-uuid"
+    - uuid: "0b1c2d3e-4f5a-4b6c-d7e8-f9a0b1c2d3e4"
       type: service
       title: "Enterprise Cloud Storage"
       description: "Object storage service with encryption"
@@ -239,22 +236,16 @@ component-definition:
         - role-id: provider
           remarks: "Cloud service provider"
       control-implementations:
-        - uuid: "fedramp-impl"
+        - uuid: "1c2d3e4f-5a6b-4c7d-e8f9-a0b1c2d3e4f5"
           source: "fedramp-moderate.json"
           description: "FedRAMP Moderate Implementation"
           implemented-requirements:
-            - uuid: "sc-28-impl"
+            - uuid: "2d3e4f5a-6b7c-4d8e-f9a0-b1c2d3e4f5a6"
               control-id: sc-28
               description: "All data encrypted at rest using AES-256"
-              props:
-                - name: implementation-status
-                  value: implemented
-            - uuid: "sc-13-impl"
+            - uuid: "3e4f5a6b-7c8d-4e9f-a0b1-c2d3e4f5a6b7"
               control-id: sc-13
               description: "FIPS 140-2 validated cryptographic modules"
-              props:
-                - name: implementation-status
-                  value: implemented
 ```
 
 ## Official Examples
