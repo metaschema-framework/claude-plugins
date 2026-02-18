@@ -154,11 +154,13 @@ Build the markdown content following this structure. **Omit any sections that ha
 ```markdown
 ## ✨ Highlights
 
-> [First sentence of PR body or title] ([#NUMBER](PR_URL))
->
-> [Brief elaboration if available in PR description]
+[Brief introductory sentence summarizing the release theme, referencing the most important changes.]
 
-[Repeat for each selected highlight, separated by blank line]
+### [Descriptive highlight title]
+
+[Description of the highlight with context. Reference the PR.] ([#NUMBER](PR_URL))
+
+[Repeat for each selected highlight using ### sub-headers]
 
 ## ⚠️ Breaking Changes
 
